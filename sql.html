@@ -1,4 +1,4 @@
-​​<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -49,6 +49,27 @@
   .logo { font-size: 20px; font-weight: 700; color: var(--accent); letter-spacing: -0.5px; }
   .logo span { color: var(--muted); font-weight: 400; }
   header .subtitle { color: var(--muted); font-size: 13px; }
+  .top-nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .top-nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 10px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: color 0.15s, background 0.15s, border-color 0.15s;
+  }
+  .top-nav a:hover,
+  .top-nav a.active {
+    color: var(--text);
+    background: var(--surface2);
+    border-color: var(--border);
+  }
   header .spacer { flex: 1; }
   .badge {
     background: var(--surface2);
@@ -577,6 +598,8 @@
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
+    header { flex-wrap: wrap; }
+    .top-nav { order: 3; width: 100%; }
     .sidebar { display: none; }
     .main { padding: 16px; }
     .stat-grid { grid-template-columns: repeat(3, 1fr); }
@@ -589,6 +612,10 @@
 <header>
   <div class="logo">SQL<span>.exam</span></div>
   <div class="subtitle">QC Mentor Examination Suite</div>
+  <nav class="top-nav" aria-label="Primary navigation">
+    <a href="sql.html">SQL</a>
+    <a href="syllabus.html">Syllabus</a>
+  </nav>
   <div class="spacer"></div>
   <div class="badge">10 Exams · <strong>600 Questions</strong></div>
 </header>
@@ -1031,7 +1058,18 @@ function goHome() {
   renderHome();
 }
 
+function setActiveNav() {
+  const path = window.location.pathname.toLowerCase();
+  document.querySelectorAll('.top-nav a').forEach(link => {
+    const target = link.getAttribute('href').toLowerCase();
+    const isSql = target === 'sql.html' && (path.endsWith('/') || path.endsWith('/index.html') || path.endsWith('/sql.html'));
+    const isSyllabus = target === 'syllabus.html' && (path.endsWith('/syllabus.html') || path.endsWith('/sylabus.html'));
+    link.classList.toggle('active', isSql || isSyllabus);
+  });
+}
+
 // Init
+setActiveNav();
 renderSidebar();
 renderHome();
 </script>
