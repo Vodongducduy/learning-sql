@@ -614,7 +614,7 @@
   <div class="subtitle">QC Mentor Examination Suite</div>
   <nav class="top-nav" aria-label="Primary navigation">
     <a href="sql.html">SQL</a>
-    <a href="syllabus.html">Syllabus</a>
+    <a href="demo-syllabus.html">Syllabus</a>
   </nav>
   <div class="spacer"></div>
   <div class="badge">10 Exams · <strong>600 Questions</strong></div>
@@ -1063,7 +1063,7 @@ function setActiveNav() {
   document.querySelectorAll('.top-nav a').forEach(link => {
     const target = link.getAttribute('href').toLowerCase();
     const isSql = target === 'sql.html' && (path.endsWith('/') || path.endsWith('/index.html') || path.endsWith('/sql.html'));
-    const isSyllabus = target === 'syllabus.html' && (path.endsWith('/syllabus.html') || path.endsWith('/sylabus.html'));
+    const isSyllabus = target === 'demo-syllabus.html' && path.endsWith('/demo-syllabus.html');
     link.classList.toggle('active', isSql || isSyllabus);
   });
 }

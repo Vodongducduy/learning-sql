@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SQL Examination Syllabus — QC Mentor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #0A0E17;
+  --surf1:    #111827;
+  --surf2:    #1a2332;
+  --surf3:    #1D2D44;
+  --border:   #243450;
+  --border2:  #2d3f5e;
+  --text:     #E2E8F0;
+  --muted:    #64748B;
+  --muted2:   #94A3B8;
+  --teal:     #2DD4BF;
+  --teal-dim: rgba(45,212,191,0.12);
+  --teal-glow:rgba(45,212,191,0.25);
+  --amber:    #F59E0B;
+  --amber-dim:rgba(245,158,11,0.12);
+  --indigo:   #818CF8;
+  --indigo-dim:rgba(129,140,248,0.12);
+  --green:    #34D399;
+  --green-dim:rgba(52,211,153,0.12);
+  --red:      #F87171;
+  --red-dim:  rgba(248,113,113,0.12);
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Inter', system-ui, sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+.top-nav{
+  position:fixed;
+  top:16px;
+  right:20px;
+  z-index:50;
+  display:flex;
+  gap:8px;
+  padding:6px;
+  background:rgba(17,24,39,0.86);
+  border:1px solid var(--border);
+  border-radius:8px;
+  backdrop-filter:blur(14px);
+}
+.top-nav a{
+  color:var(--muted2);
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+  padding:7px 10px;
+  border:1px solid transparent;
+  border-radius:6px;
+}
+.top-nav a:hover,
+.top-nav a.active{
+  color:var(--text);
+  background:var(--surf2);
+  border-color:var(--border2);
+}
+
+/* ── HERO ───────────────────────────────────── */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:80px 24px 60px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 800px 600px at 50% 30%, rgba(45,212,191,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 300px at 20% 80%, rgba(129,140,248,0.05) 0%, transparent 60%);
+  pointer-events:none;
+}
+.grid-bg{
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(45,212,191,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45,212,191,0.04) 1px, transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;
+  mask-image:radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
+}
+.hero-eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--teal);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:32px;
+  opacity:0.8;
+}
+.hero-sql{
+  font-family:var(--mono);
+  font-size:clamp(13px,2vw,16px);
+  color:var(--muted2);
+  text-align:left;
+  display:inline-block;
+  background:var(--surf1);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:28px 36px;
+  margin-bottom:40px;
+  position:relative;
+  line-height:1.9;
+  max-width:680px;
+  width:100%;
+  box-shadow:0 0 0 1px rgba(45,212,191,0.1), 0 8px 40px rgba(0,0,0,0.5);
+}
+.hero-sql::before{
+  content:'';
+  position:absolute;
+  top:-1px; left:-1px; right:-1px;
+  height:3px;
+  background:linear-gradient(90deg, var(--teal), var(--indigo));
+  border-radius:12px 12px 0 0;
+}
+.sql-comment{ color:#5c7a6e; }
+.sql-kw{ color:var(--teal); font-weight:600; }
+.sql-str{ color:var(--amber); }
+.sql-func{ color:var(--indigo); }
+.sql-num{ color:#f87171; }
+.cursor{
+  display:inline-block;
+  width:10px; height:1.1em;
+  background:var(--teal);
+  vertical-align:text-bottom;
+  animation:blink 1.2s step-end infinite;
+  border-radius:1px;
+  margin-left:2px;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero h1{
+  font-family:var(--mono);
+  font-size:clamp(28px,5vw,52px);
+  font-weight:700;
+  line-height:1.15;
+  letter-spacing:-1px;
+  margin-bottom:20px;
+  color:var(--text);
+}
+.hero h1 span{ color:var(--teal); }
+.hero-sub{
+  font-size:17px;
+  color:var(--muted2);
+  max-width:560px;
+  margin:0 auto 48px;
+  line-height:1.7;
+}
+.hero-stats{
+  display:flex;
+  gap:32px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.stat{
+  text-align:center;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:20px 28px;
+  background:var(--surf1);
+  min-width:120px;
+  position:relative;
+  overflow:hidden;
+}
+.stat::after{
+  content:'';
+  position:absolute;
+  bottom:0; left:0; right:0;
+  height:2px;
+}
+.stat.teal::after{ background:var(--teal); }
+.stat.amber::after{ background:var(--amber); }
+.stat.indigo::after{ background:var(--indigo); }
+.stat-n{
+  font-family:var(--mono);
+  font-size:36px;
+  font-weight:700;
+  line-height:1;
+  margin-bottom:6px;
+}
+.stat.teal .stat-n{ color:var(--teal); }
+.stat.amber .stat-n{ color:var(--amber); }
+.stat.indigo .stat-n{ color:var(--indigo); }
+.stat-l{ font-size:12px; color:var(--muted2); letter-spacing:0.5px; }
+
+/* ── STICKY NAV ─────────────────────────────── */
+.sticky-nav{
+  position:sticky;
+  top:0;
+  z-index:200;
+  background:rgba(10,14,23,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:0 32px;
+}
+.nav-inner{
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:0;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-link{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+  text-decoration:none;
+  padding:14px 16px;
+  white-space:nowrap;
+  border-bottom:2px solid transparent;
+  transition:color 0.2s, border-color 0.2s;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.nav-link:hover{ color:var(--text); border-bottom-color:var(--border2); }
+.nav-link.active{ color:var(--teal); border-bottom-color:var(--teal); }
+.nav-divider{ width:1px; height:20px; background:var(--border); flex-shrink:0; margin:0 4px; }
+
+/* ── CONTENT WRAPPER ────────────────────────── */
+.content{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 32px 120px;
+}
+
+/* ── SECTION ────────────────────────────────── */
+.section{
+  padding:72px 0 0;
+}
+.section-label{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.section-label::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background:var(--border);
+}
+.section-title{
+  font-size:28px;
+  font-weight:700;
+  letter-spacing:-0.5px;
+  margin-bottom:8px;
+  color:var(--text);
+}
+.section-desc{
+  font-size:15px;
+  color:var(--muted2);
+  margin-bottom:40px;
+  max-width:700px;
+}
+
+/* ── PREREQUISITES ──────────────────────────── */
+.prereq-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:16px;
+  margin-bottom:40px;
+}
+.prereq-card{
+  background:var(--surf1);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:20px;
+}
+.prereq-card-title{
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.prereq-card ul{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.prereq-card li{
+  font-size:13px;
+  color:var(--muted2);
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  line-height:1.5;
+}
+.prereq-card li::before{
+  content:'→';
+  color:var(--teal);
+  flex-shrink:0;
+  font-family:var(--mono);
+  font-size:11px;
+  margin-top:2px;
+}
+
+/* ── LEARNING PATH ──────────────────────────── */
+.path-track{
+  position:relative;
+  padding-left:32px;
+}
+.path-track::before{
+  content:'';
+  position:absolute;
+  left:11px; top:12px; bottom:12px;
+  width:2px;
+  background:linear-gradient(to bottom, var(--teal), var(--indigo));
+}
+.path-node{
+  position:relative;
+  display:flex;
+  gap:20px;
+  margin-bottom:32px;
+}
+.path-dot{
+  position:absolute;
+  left:-32px;
+  top:8px;
+  width:24px; height:24px;
+  border-radius:50%;
+  border:2px solid;
+  background:var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  flex-shrink:0;
+}
+.path-dot.fresher{ border-color:var(--green); color:var(--green); }
+.path-dot.junior{ border-color:var(--teal); color:var(--teal); }
+.path-dot.advanced{ border-color:var(--indigo); color:var(--indigo); }
+.path-body{
+  background:var(--surf1);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px 20px;
+  flex:1;
+}
+.path-phase{
+  font-size:10px;
+  font-family:var(--mono);
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-bottom:6px;
+  font-weight:600;
+}
+.phase-fresher{ color:var(--green); }
+.phase-junior{ color:var(--teal); }
+.phase-advanced{ color:var(--indigo); }
+.path-title{ font-size:15px; font-weight:700; margin-bottom:8px; }
+.path-exams{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.exam-chip{
+  font-family:var(--mono);
+  font-size:11px;
+  padding:3px 10px;
+  border-radius:20px;
+  border:1px solid;
+  white-space:nowrap;
+}
+.chip-fresher{ border-color:rgba(52,211,153,0.4); color:var(--green); background:var(--green-dim); }
+.chip-junior{ border-color:rgba(45,212,191,0.4); color:var(--teal); background:var(--teal-dim); }
+.chip-advanced{ border-color:rgba(129,140,248,0.4); color:var(--indigo); background:var(--indigo-dim); }
+
+/* ── PASS THRESHOLD ─────────────────────────── */
+.threshold-bar{
+  background:var(--surf1);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:20px 24px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  margin-bottom:20px;
+}
+.threshold-info{ flex:1; }
+.threshold-title{ font-weight:700; margin-bottom:4px; font-size:14px; }
+.threshold-desc{ font-size:13px; color:var(--muted2); }
+.threshold-visual{ display:flex; gap:4px; align-items:center; flex-shrink:0; }
+.th-block{ width:10px; height:32px; border-radius:2px; }
+
+/* ── EXAM MODULES ───────────────────────────── */
+.exam-modules{ display:flex; flex-direction:column; gap:12px; }
+.exam-module{
+  background:var(--surf1);
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  transition:border-color 0.2s;
+}
+.exam-module:hover{ border-color:var(--border2); }
+.exam-module.open{ border-color:var(--border2); }
+.module-header{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:18px 24px;
+  cursor:pointer;
+  user-select:none;
+}
+.module-header:hover{ background:rgba(255,255,255,0.02); }
+.module-num{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:700;
+  color:var(--muted);
+  flex-shrink:0;
+  width:28px;
+}
+.module-icon{ font-size:22px; flex-shrink:0; }
+.module-meta{ flex:1; min-width:0; }
+.module-title{ font-size:15px; font-weight:700; margin-bottom:2px; }
+.module-sub{ font-size:12px; color:var(--muted2); }
+.module-tags{ display:flex; gap:6px; flex-shrink:0; align-items:center; }
+.level-tag{
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  padding:3px 9px;
+  border-radius:4px;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+}
+.lt-fresher{ background:var(--green-dim); color:var(--green); }
+.lt-junior{ background:var(--teal-dim); color:var(--teal); }
+.lt-advanced{ background:var(--indigo-dim); color:var(--indigo); }
+.q-count{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  background:var(--surf3, #1D2D44);
+  padding:3px 8px;
+  border-radius:4px;
+}
+.chevron{
+  color:var(--muted);
+  transition:transform 0.25s;
+  flex-shrink:0;
+  font-size:12px;
+}
+.exam-module.open .chevron{ transform:rotate(180deg); }
+
+.module-body{
+  display:none;
+  border-top:1px solid var(--border);
+}
+.exam-module.open .module-body{ display:block; }
+.module-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+}
+.module-col{
+  padding:24px;
+  border-right:1px solid var(--border);
+}
+.module-col:last-child{ border-right:none; }
+.col-title{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  font-weight:600;
+  margin-bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.col-title-icon{ font-size:14px; }
+.col-title.knowledge{ color:var(--teal); }
+.col-title.skills{ color:var(--indigo); }
+.col-title.topics{ color:var(--amber); }
+.col-title.traps{ color:var(--red); }
+.module-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.module-list li{
+  font-size:13px;
+  color:var(--muted2);
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  line-height:1.5;
+}
+.li-dot{
+  width:6px; height:6px;
+  border-radius:50%;
+  flex-shrink:0;
+  margin-top:6px;
+}
+.dot-teal{ background:var(--teal); }
+.dot-indigo{ background:var(--indigo); }
+.dot-amber{ background:var(--amber); }
+.dot-red{ background:var(--red); }
+.module-full{ padding:24px; border-top:1px solid var(--border); }
+.traps-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(240px,1fr));
+  gap:10px;
+}
+.trap-card{
+  background:var(--red-dim);
+  border:1px solid rgba(248,113,113,0.2);
+  border-radius:8px;
+  padding:12px 14px;
+  font-size:12px;
+  color:var(--muted2);
+  line-height:1.5;
+}
+.trap-card strong{
+  display:block;
+  color:var(--red);
+  font-size:12px;
+  margin-bottom:4px;
+  font-family:var(--mono);
+}
+.study-tips{
+  padding:20px 24px;
+  background:var(--teal-dim);
+  border-top:1px solid var(--border);
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+}
+.study-tips-icon{ font-size:20px; flex-shrink:0; margin-top:2px; }
+.study-tips-text{ font-size:13px; color:var(--muted2); line-height:1.6; }
+.study-tips-text strong{ color:var(--teal); }
+
+/* ── SCORE GUIDE ────────────────────────────── */
+.score-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+  margin-bottom:32px;
+}
+.score-card{
+  border-radius:10px;
+  border:1px solid;
+  padding:20px 16px;
+  text-align:center;
+}
+.score-grade{
+  font-family:var(--mono);
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:4px;
+}
+.score-range{
+  font-family:var(--mono);
+  font-size:13px;
+  margin-bottom:6px;
+}
+.score-label{ font-size:12px; color:var(--muted2); }
+.grade-s{ border-color:rgba(52,211,153,0.4); background:var(--green-dim); }
+.grade-s .score-grade,.grade-s .score-range{ color:var(--green); }
+.grade-a{ border-color:rgba(45,212,191,0.3); background:var(--teal-dim); }
+.grade-a .score-grade,.grade-a .score-range{ color:var(--teal); }
+.grade-b{ border-color:rgba(245,158,11,0.3); background:var(--amber-dim); }
+.grade-b .score-grade,.grade-b .score-range{ color:var(--amber); }
+.grade-c{ border-color:rgba(129,140,248,0.3); background:var(--indigo-dim); }
+.grade-c .score-grade,.grade-c .score-range{ color:var(--indigo); }
+.grade-f{ border-color:rgba(248,113,113,0.3); background:var(--red-dim); }
+.grade-f .score-grade,.grade-f .score-range{ color:var(--red); }
+
+/* ── CHECKLIST ──────────────────────────────── */
+.checklist-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
+}
+.checklist-group{
+  background:var(--surf1);
+  border:1px solid var(--border);
+  border-radius:10px;
+  overflow:hidden;
+}
+.checklist-header{
+  padding:14px 18px;
+  font-weight:700;
+  font-size:13px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.checklist-items{
+  padding:14px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.check-item{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:13px;
+  color:var(--muted2);
+  line-height:1.5;
+  cursor:pointer;
+}
+.check-item input[type=checkbox]{
+  width:16px; height:16px;
+  border-radius:3px;
+  margin-top:2px;
+  accent-color:var(--teal);
+  flex-shrink:0;
+  cursor:pointer;
+}
+.check-item.checked{ color:var(--muted); text-decoration:line-through; }
+
+/* ── FOOTER ─────────────────────────────────── */
+footer{
+  border-top:1px solid var(--border);
+  padding:32px;
+  text-align:center;
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--muted);
+}
+footer span{ color:var(--teal); }
+
+/* ── UTILITY ─────────────────────────────────── */
+.divider{ height:1px; background:var(--border); margin:40px 0; }
+code{
+  font-family:var(--mono);
+  font-size:12px;
+  background:var(--surf3, #1D2D44);
+  color:var(--teal);
+  padding:2px 7px;
+  border-radius:4px;
+}
+
+@media(max-width:768px){
+  .top-nav{ left:16px; right:16px; justify-content:center; }
+  .module-grid{ grid-template-columns:1fr; }
+  .module-col{ border-right:none; border-bottom:1px solid var(--border); }
+  .score-grid{ grid-template-columns:repeat(3,1fr); }
+  .hero-stats{ gap:12px; }
+  .stat{ padding:14px 18px; }
+  .content{ padding:0 16px 80px; }
+  .module-tags{ display:none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav" aria-label="Primary navigation">
+  <a href="sql.html">SQL</a>
+  <a href="demo-syllabus.html" class="active">Syllabus</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="grid-bg"></div>
+  <div class="hero-eyebrow">QC Mentor Program · SQL Examination Series</div>
+
+  <div class="hero-sql">
+    <div><span class="sql-comment">/*</span></div>
+    <div><span class="sql-comment"> * SQL EXAMINATION SYLLABUS</span></div>
+    <div><span class="sql-comment"> * Target  : QA Engineers (Fresher → Junior)</span></div>
+    <div><span class="sql-comment"> * Exams   : 10 modules × 60 questions = 600 total</span></div>
+    <div><span class="sql-comment"> * Pass    : score >= 70% per exam (42/60)</span></div>
+    <div><span class="sql-comment"> */</span></div>
+    <div>&nbsp;</div>
+    <div>
+      <span class="sql-kw">SELECT</span>
+      <span class="sql-func"> knowledge</span>,
+      <span class="sql-func"> skills</span>,
+      <span class="sql-func"> confidence</span>
+    </div>
+    <div>
+      <span class="sql-kw">FROM</span>
+      <span class="sql-str"> qc_mentee</span>
+    </div>
+    <div>
+      <span class="sql-kw">WHERE</span>
+      <span class="sql-func"> study_completed</span>
+      = <span class="sql-num">TRUE</span>
+      <span class="cursor"></span>
+    </div>
+  </div>
+
+  <h1>SQL Examination<br><span>Syllabus & Study Guide</span></h1>
+  <p class="hero-sub">Everything you need to know, understand, and practise before sitting the 10-exam SQL series for QA Engineers.</p>
+
+  <div class="hero-stats">
+    <div class="stat teal">
+      <div class="stat-n">10</div>
+      <div class="stat-l">Exam Modules</div>
+    </div>
+    <div class="stat amber">
+      <div class="stat-n">600</div>
+      <div class="stat-l">Questions Total</div>
+    </div>
+    <div class="stat indigo">
+      <div class="stat-n">70%</div>
+      <div class="stat-l">Pass Threshold</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STICKY NAV ── -->
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <a href="#prereqs" class="nav-link">Prerequisites</a>
+    <div class="nav-divider"></div>
+    <a href="#path" class="nav-link">Learning Path</a>
+    <div class="nav-divider"></div>
+    <a href="#modules" class="nav-link">Exam 1 · SELECT</a>
+    <a href="#m2" class="nav-link">2 · WHERE</a>
+    <a href="#m3" class="nav-link">3 · JOINs</a>
+    <a href="#m4" class="nav-link">4 · Aggregation</a>
+    <a href="#m5" class="nav-link">5 · Subqueries</a>
+    <a href="#m6" class="nav-link">6 · NULLs</a>
+    <a href="#m7" class="nav-link">7 · Date/Time</a>
+    <a href="#m8" class="nav-link">8 · QA Patterns</a>
+    <a href="#m9" class="nav-link">9 · Advanced</a>
+    <a href="#m10" class="nav-link">10 · Review</a>
+    <div class="nav-divider"></div>
+    <a href="#grading" class="nav-link">Grading</a>
+    <a href="#checklist" class="nav-link">Checklist</a>
+  </div>
+</nav>
+
+<div class="content">
+
+<!-- ── PREREQUISITES ── -->
+<section class="section" id="prereqs">
+  <div class="section-label">Before You Begin</div>
+  <h2 class="section-title">Prerequisites</h2>
+  <p class="section-desc">These examinations assume baseline computer literacy and QA awareness. No prior SQL experience is required for Exams 1–2, but the following foundations will accelerate your progress significantly.</p>
+
+  <div class="prereq-grid">
+    <div class="prereq-card">
+      <div class="prereq-card-title" style="color:var(--green)">🟢 General Knowledge</div>
+      <ul>
+        <li>Understand what a relational database is (tables, rows, columns)</li>
+        <li>Know the difference between a database and a spreadsheet</li>
+        <li>Familiarity with basic data types: text, number, date, boolean</li>
+        <li>Awareness of primary keys and what makes a row unique</li>
+        <li>Can open and use a SQL client (MySQL Workbench, DBeaver, or similar)</li>
+      </ul>
+    </div>
+    <div class="prereq-card">
+      <div class="prereq-card-title" style="color:var(--teal)">🔵 QA Context</div>
+      <ul>
+        <li>Know the bug life cycle and software testing fundamentals</li>
+        <li>Understand what an API does and what a response body looks like</li>
+        <li>Familiar with terms: endpoint, payload, status code, response</li>
+        <li>Know what "test data" means and why test cleanup matters</li>
+        <li>Understand data integrity at a conceptual level (correct data in right place)</li>
+      </ul>
+    </div>
+    <div class="prereq-card">
+      <div class="prereq-card-title" style="color:var(--amber)">🟡 Technical Setup</div>
+      <ul>
+        <li>MySQL 8.0+ installed locally or access to a practice environment</li>
+        <li>Access to a sample database (e.g. <code>sakila</code>, <code>world</code>, or a QA project DB)</li>
+        <li>Ability to run SQL queries and read results</li>
+        <li>Browser with developer tools for inspecting API responses</li>
+      </ul>
+    </div>
+    <div class="prereq-card">
+      <div class="prereq-card-title" style="color:var(--indigo)">🟣 Recommended Experience</div>
+      <ul>
+        <li>At least 1 sprint cycle participating in QA activities</li>
+        <li>Attempted to verify at least one API result manually</li>
+        <li>Read or written at least one bug report</li>
+        <li>Reviewed a test case document or test plan</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── LEARNING PATH ── -->
+<section class="section" id="path">
+  <div class="section-label">Study Sequence</div>
+  <h2 class="section-title">Recommended Learning Path</h2>
+  <p class="section-desc">The 10 exams are sequenced to build on each other. Take them in order — later exams assume you have mastered earlier concepts. Estimated total study time: <strong>40–60 hours</strong> across 4–6 weeks.</p>
+
+  <div class="path-track">
+    <div class="path-node">
+      <div class="path-dot fresher">1</div>
+      <div class="path-body">
+        <div class="path-phase phase-fresher">Phase 1 — Fresher · Weeks 1–2</div>
+        <div class="path-title">SQL Foundations</div>
+        <p style="font-size:13px;color:var(--muted2);margin-bottom:12px">Master the basics of querying, filtering, and understanding relational data. Every subsequent exam builds on these two modules.</p>
+        <div class="path-exams">
+          <span class="exam-chip chip-fresher">Exam 1 · SELECT</span>
+          <span class="exam-chip chip-fresher">Exam 2 · WHERE</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="path-node">
+      <div class="path-dot junior">2</div>
+      <div class="path-body">
+        <div class="path-phase phase-junior">Phase 2 — Fresher → Junior · Weeks 2–3</div>
+        <div class="path-title">Relational Queries & Aggregation</div>
+        <p style="font-size:13px;color:var(--muted2);margin-bottom:12px">Learn how to connect multiple tables and summarise data — the two skills QA engineers use most in daily verification work.</p>
+        <div class="path-exams">
+          <span class="exam-chip chip-junior">Exam 3 · JOINs</span>
+          <span class="exam-chip chip-junior">Exam 4 · Aggregation</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="path-node">
+      <div class="path-dot junior">3</div>
+      <div class="path-body">
+        <div class="path-phase phase-junior">Phase 3 — Junior · Weeks 3–4</div>
+        <div class="path-title">Advanced Filtering & Data Quality</div>
+        <p style="font-size:13px;color:var(--muted2);margin-bottom:12px">Tackle nested queries and the most dangerous data edge case — NULL. These topics separate junior testers from freshers.</p>
+        <div class="path-exams">
+          <span class="exam-chip chip-junior">Exam 5 · Subqueries</span>
+          <span class="exam-chip chip-junior">Exam 6 · NULLs</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="path-node">
+      <div class="path-dot junior">4</div>
+      <div class="path-body">
+        <div class="path-phase phase-junior">Phase 4 — Junior · Weeks 4–5</div>
+        <div class="path-title">Applied QA SQL</div>
+        <p style="font-size:13px;color:var(--muted2);margin-bottom:12px">Apply SQL specifically to QA workflows: time-based queries for audit trails, and real-world verification patterns after API calls.</p>
+        <div class="path-exams">
+          <span class="exam-chip chip-junior">Exam 7 · Date &amp; Time</span>
+          <span class="exam-chip chip-junior">Exam 8 · QA Patterns</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="path-node">
+      <div class="path-dot advanced">5</div>
+      <div class="path-body">
+        <div class="path-phase phase-advanced">Phase 5 — Junior+ · Weeks 5–6</div>
+        <div class="path-title">Advanced Techniques & Mastery Review</div>
+        <p style="font-size:13px;color:var(--muted2);margin-bottom:12px">Window functions, CTEs, and conditional expressions — then a comprehensive mixed review that tests everything together.</p>
+        <div class="path-exams">
+          <span class="exam-chip chip-advanced">Exam 9 · Advanced SQL</span>
+          <span class="exam-chip chip-advanced">Exam 10 · Mixed Review</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="threshold-bar" style="margin-top:32px">
+    <div class="threshold-info">
+      <div class="threshold-title">Pass Threshold: 70% (42 correct out of 60)</div>
+      <div class="threshold-desc">Achieve 70% or above in each exam to demonstrate readiness for production QA work. 80%+ indicates strong competency. 90%+ is mentor-level mastery.</div>
+    </div>
+    <div class="threshold-visual">
+      <span style="font-size:12px;color:var(--muted);margin-right:6px;font-family:var(--mono)">0%</span>
+      <div class="th-block" style="background:var(--red);opacity:0.8"></div>
+      <div class="th-block" style="background:var(--red);opacity:0.6"></div>
+      <div class="th-block" style="background:var(--red);opacity:0.4"></div>
+      <div class="th-block" style="background:var(--red);opacity:0.2"></div>
+      <div style="width:2px;height:40px;background:var(--amber);margin:0 2px"></div>
+      <div class="th-block" style="background:var(--amber);opacity:0.5"></div>
+      <div class="th-block" style="background:var(--teal);opacity:0.5"></div>
+      <div class="th-block" style="background:var(--teal);opacity:0.7"></div>
+      <div class="th-block" style="background:var(--green);opacity:0.8"></div>
+      <div class="th-block" style="background:var(--green)"></div>
+      <span style="font-size:12px;color:var(--muted);margin-left:6px;font-family:var(--mono)">100%</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXAM MODULES ── -->
+<section class="section" id="modules">
+  <div class="section-label">Examination Modules</div>
+  <h2 class="section-title">Syllabus by Exam</h2>
+  <p class="section-desc">Click any exam to expand its full syllabus — topics covered, required knowledge, required skills, common traps, and study tips.</p>
+
+  <div class="exam-modules">
+
+    <!-- EXAM 1 -->
+    <div class="exam-module" id="m1">
+      <div class="module-header" onclick="toggle(this)">
+        <div class="module-num">01</div>
+        <div class="module-icon">🔍</div>
+        <div class="module-meta">
+          <div class="module-title">SELECT &amp; Basic Queries</div>
+          <div class="module-sub">SELECT, FROM, aliases, DISTINCT, ORDER BY, LIMIT, OFFSET, expressions</div>
+        </div>
+        <div class="module-tags">
+          <span class="level-tag lt-fresher">Fresher</span>
+          <span class="q-count">60 Q</span>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="module-body">
+        <div class="module-grid">
+          <div class="module-col">
+            <div class="col-title knowledge"><span class="col-title-icon">📖</span>Required Knowledge</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-teal"></span>SQL statement anatomy: SELECT … FROM … WHERE … ORDER BY … LIMIT</li>
+              <li><span class="li-dot dot-teal"></span>The difference between SELECT * and selecting specific columns</li>
+              <li><span class="li-dot dot-teal"></span>How column aliases work with AS (and without)</li>
+              <li><span class="li-dot dot-teal"></span>What DISTINCT does and when it applies to multiple columns</li>
+              <li><span class="li-dot dot-teal"></span>ASC vs DESC sort order; sorting by multiple columns (comma-separated)</li>
+              <li><span class="li-dot dot-teal"></span>LIMIT and OFFSET mechanics for pagination (LIMIT count OFFSET skip and LIMIT skip,count syntaxes)</li>
+              <li><span class="li-dot dot-teal"></span>SQL arithmetic in SELECT: +, -, *, /, MOD, DIV</li>
+              <li><span class="li-dot dot-teal"></span>Scalar functions: UPPER, LOWER, LENGTH, TRIM, CONCAT, ROUND, FLOOR, CEILING, ABS</li>
+              <li><span class="li-dot dot-teal"></span>NULL in arithmetic: any expression involving NULL returns NULL</li>
+              <li><span class="li-dot dot-teal"></span>SQL comment styles: -- single line and /* block */</li>
+            </ul>
+          </div>
+          <div class="module-col">
+            <div class="col-title skills"><span class="col-title-icon">⚙️</span>Required Skills</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-indigo"></span>Write a valid SELECT for any combination of columns, table, sort, and limit</li>
+              <li><span class="li-dot dot-indigo"></span>Use aliases to rename columns and tables meaningfully</li>
+              <li><span class="li-dot dot-indigo"></span>Select the N most recent or top-N records using ORDER BY + LIMIT</li>
+              <li><span class="li-dot dot-indigo"></span>Write paginated queries using LIMIT + OFFSET</li>
+              <li><span class="li-dot dot-indigo"></span>Use DISTINCT correctly for single and multi-column deduplication</li>
+              <li><span class="li-dot dot-indigo"></span>Apply scalar string/math functions inside SELECT</li>
+              <li><span class="li-dot dot-indigo"></span>Predict what a query returns including NULLs and empty sets</li>
+              <li><span class="li-dot dot-indigo"></span>Spot and fix common syntax errors (missing column list, wrong clause order)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-full">
+          <div class="col-title traps" style="margin-bottom:12px"><span class="col-title-icon">⚠️</span>Common Traps in This Exam</div>
+          <div class="traps-row">
+            <div class="trap-card"><strong>ORDER BY position</strong>ORDER BY 2 sorts by the 2nd SELECT column — valid but confusing. Know what it does.</div>
+            <div class="trap-card"><strong>Alias in WHERE</strong>Aliases defined in SELECT cannot be used in WHERE (evaluated before SELECT).</div>
+            <div class="trap-card"><strong>LIMIT 10, 20 syntax</strong>LIMIT offset, count — the first number is SKIP, second is COUNT (opposite of what you might expect).</div>
+            <div class="trap-card"><strong>DISTINCT on multiple columns</strong>DISTINCT applies to the entire row combination, not just the first column listed.</div>
+            <div class="trap-card"><strong>NULL arithmetic</strong>NULL + 5 = NULL. NULL in any arithmetic expression poisons the whole result.</div>
+          </div>
+        </div>
+        <div class="study-tips">
+          <div class="study-tips-icon">💡</div>
+          <div class="study-tips-text"><strong>Study tip:</strong> Before this exam, write 20 different SELECT queries against a real database. Practice: selecting specific columns, aliasing, sorting by 2 columns, paginating through results, and applying at least 5 different scalar functions. The questions are practical — syntax you'll write weekly as a QA engineer.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAM 2 -->
+    <div class="exam-module" id="m2">
+      <div class="module-header" onclick="toggle(this)">
+        <div class="module-num">02</div>
+        <div class="module-icon">🔎</div>
+        <div class="module-meta">
+          <div class="module-title">WHERE Clause &amp; Filtering</div>
+          <div class="module-sub">Comparison operators, BETWEEN, IN, LIKE, IS NULL, AND/OR, operator precedence</div>
+        </div>
+        <div class="module-tags">
+          <span class="level-tag lt-fresher">Fresher</span>
+          <span class="q-count">60 Q</span>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="module-body">
+        <div class="module-grid">
+          <div class="module-col">
+            <div class="col-title knowledge"><span class="col-title-icon">📖</span>Required Knowledge</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-teal"></span>All comparison operators: =, !=, &lt;&gt;, &lt;, &gt;, &lt;=, &gt;=</li>
+              <li><span class="li-dot dot-teal"></span>BETWEEN x AND y is inclusive on both ends</li>
+              <li><span class="li-dot dot-teal"></span>IN (list) and NOT IN (list) — how they work with literals and subqueries</li>
+              <li><span class="li-dot dot-teal"></span>LIKE wildcards: % (zero or more chars) and _ (exactly one char)</li>
+              <li><span class="li-dot dot-teal"></span>IS NULL and IS NOT NULL — why = NULL never works</li>
+              <li><span class="li-dot dot-teal"></span>Logical operators AND, OR, NOT and their precedence (AND before OR)</li>
+              <li><span class="li-dot dot-teal"></span>NULL in comparisons: NULL = NULL → NULL (not TRUE)</li>
+              <li><span class="li-dot dot-teal"></span>NOT IN with NULL in the list silently returns empty results</li>
+              <li><span class="li-dot dot-teal"></span>REGEXP for pattern matching beyond LIKE</li>
+              <li><span class="li-dot dot-teal"></span>Case sensitivity in string comparisons (collation-dependent)</li>
+            </ul>
+          </div>
+          <div class="module-col">
+            <div class="col-title skills"><span class="col-title-icon">⚙️</span>Required Skills</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-indigo"></span>Write WHERE clauses that correctly filter on equality, ranges, lists, and patterns</li>
+              <li><span class="li-dot dot-indigo"></span>Use IS NULL / IS NOT NULL correctly (never = NULL)</li>
+              <li><span class="li-dot dot-indigo"></span>Build compound conditions with AND, OR, NOT — including parentheses for precedence</li>
+              <li><span class="li-dot dot-indigo"></span>Write LIKE patterns for starts-with, ends-with, contains, and exact-length matches</li>
+              <li><span class="li-dot dot-indigo"></span>Detect and fix the NOT IN + NULL trap using NOT EXISTS instead</li>
+              <li><span class="li-dot dot-indigo"></span>Filter records by date ranges using INTERVAL syntax</li>
+              <li><span class="li-dot dot-indigo"></span>Write QA-relevant filters: detect empty fields, invalid formats, test data patterns</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-full">
+          <div class="col-title traps" style="margin-bottom:12px"><span class="col-title-icon">⚠️</span>Common Traps in This Exam</div>
+          <div class="traps-row">
+            <div class="trap-card"><strong>WHERE col = NULL</strong>This never matches anything. Always use IS NULL. This is the single most common fresher SQL mistake.</div>
+            <div class="trap-card"><strong>NOT IN with NULLs</strong>NOT IN (1, 2, NULL) returns zero rows for any value — NULL poisons the entire NOT IN evaluation.</div>
+            <div class="trap-card"><strong>AND vs OR precedence</strong>a=1 OR b=2 AND c=3 means a=1 OR (b=2 AND c=3). Use parentheses to make intent explicit.</div>
+            <div class="trap-card"><strong>LIKE '%value' performance</strong>Leading wildcard prevents index use — full table scan. Know the performance implication even if the question doesn't ask about it.</div>
+            <div class="trap-card"><strong>BETWEEN inclusivity</strong>BETWEEN 18 AND 65 includes both 18 and 65. Many candidates assume exclusivity.</div>
+          </div>
+        </div>
+        <div class="study-tips">
+          <div class="study-tips-icon">💡</div>
+          <div class="study-tips-text"><strong>Study tip:</strong> Open any table and practice filtering: find records created in the last 7 days, find rows with empty or NULL emails, find all active users whose name starts with 'A' and ends with 'n'. For each query, predict the result before running. The NULL trap questions are high-value — study IS NULL vs = NULL until it's reflexive.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAM 3 -->
+    <div class="exam-module" id="m3">
+      <div class="module-header" onclick="toggle(this)">
+        <div class="module-num">03</div>
+        <div class="module-icon">🔗</div>
+        <div class="module-meta">
+          <div class="module-title">JOIN Operations</div>
+          <div class="module-sub">INNER, LEFT, RIGHT, FULL OUTER, SELF, CROSS JOIN — anti-joins, fanout, integrity checks</div>
+        </div>
+        <div class="module-tags">
+          <span class="level-tag lt-junior">Fresher→Junior</span>
+          <span class="q-count">60 Q</span>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="module-body">
+        <div class="module-grid">
+          <div class="module-col">
+            <div class="col-title knowledge"><span class="col-title-icon">📖</span>Required Knowledge</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-teal"></span>INNER JOIN: only rows with matches in both tables</li>
+              <li><span class="li-dot dot-teal"></span>LEFT JOIN: all left rows + NULLs for unmatched right rows</li>
+              <li><span class="li-dot dot-teal"></span>RIGHT JOIN: all right rows + NULLs for unmatched left rows</li>
+              <li><span class="li-dot dot-teal"></span>FULL OUTER JOIN concept (simulate in MySQL with LEFT UNION RIGHT)</li>
+              <li><span class="li-dot dot-teal"></span>CROSS JOIN: Cartesian product (m × n rows)</li>
+              <li><span class="li-dot dot-teal"></span>SELF JOIN: joining a table to itself using aliases</li>
+              <li><span class="li-dot dot-teal"></span>ON clause vs USING clause; ON vs WHERE for LEFT JOIN filtering</li>
+              <li><span class="li-dot dot-teal"></span>Anti-join pattern: LEFT JOIN + WHERE right.id IS NULL</li>
+              <li><span class="li-dot dot-teal"></span>JOIN vs subquery for existence checks</li>
+              <li><span class="li-dot dot-teal"></span>Fanout: one-to-many join duplicates left rows</li>
+              <li><span class="li-dot dot-teal"></span>Referential integrity checking with LEFT JOIN + IS NULL</li>
+            </ul>
+          </div>
+          <div class="module-col">
+            <div class="col-title skills"><span class="col-title-icon">⚙️</span>Required Skills</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-indigo"></span>Choose the correct JOIN type for a given requirement</li>
+              <li><span class="li-dot dot-indigo"></span>Write a LEFT JOIN that finds all records including unmatched ones</li>
+              <li><span class="li-dot dot-indigo"></span>Write an anti-join to detect orphan records</li>
+              <li><span class="li-dot dot-indigo"></span>Join three or more tables in a single query</li>
+              <li><span class="li-dot dot-indigo"></span>Use table aliases correctly in complex JOIN queries</li>
+              <li><span class="li-dot dot-indigo"></span>Recognise and avoid accidental CROSS JOIN (missing ON clause)</li>
+              <li><span class="li-dot dot-indigo"></span>Check referential integrity between parent and child tables</li>
+              <li><span class="li-dot dot-indigo"></span>Explain why WHERE on a right-table column converts LEFT JOIN to INNER JOIN</li>
+              <li><span class="li-dot dot-indigo"></span>Use DISTINCT to remove fanout duplicates</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-full">
+          <div class="col-title traps" style="margin-bottom:12px"><span class="col-title-icon">⚠️</span>Common Traps in This Exam</div>
+          <div class="traps-row">
+            <div class="trap-card"><strong>WHERE converts LEFT JOIN</strong>Adding WHERE right.col = 'x' to a LEFT JOIN eliminates unmatched rows — effectively making it INNER JOIN.</div>
+            <div class="trap-card"><strong>NULL join keys</strong>NULL = NULL in a JOIN condition returns NULL (not TRUE). NULL-keyed rows never match.</div>
+            <div class="trap-card"><strong>Fanout in aggregates</strong>SUM after joining one-to-many inflates results. Aggregate BEFORE joining or use DISTINCT.</div>
+            <div class="trap-card"><strong>ON vs USING</strong>USING (col) only works if both tables have identically named columns. Wrong usage of USING produces semantic errors.</div>
+            <div class="trap-card"><strong>SELECT * on JOIN</strong>Returns duplicate column names (e.g., 'id' from both tables). Always name your columns in JOIN queries.</div>
+          </div>
+        </div>
+        <div class="study-tips">
+          <div class="study-tips-icon">💡</div>
+          <div class="study-tips-text"><strong>Study tip:</strong> Draw the Venn diagram for INNER, LEFT, and RIGHT JOIN before writing any code. Practice the anti-join pattern specifically — <code>LEFT JOIN … WHERE right.id IS NULL</code> — as it appears in nearly every QA integrity check scenario. Write a query that finds orphan records in your test database.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAM 4 -->
+    <div class="exam-module" id="m4">
+      <div class="module-header" onclick="toggle(this)">
+        <div class="module-num">04</div>
+        <div class="module-icon">📊</div>
+        <div class="module-meta">
+          <div class="module-title">Aggregation &amp; GROUP BY</div>
+          <div class="module-sub">COUNT, SUM, AVG, MIN, MAX, GROUP BY, HAVING, conditional aggregation</div>
+        </div>
+        <div class="module-tags">
+          <span class="level-tag lt-junior">Fresher→Junior</span>
+          <span class="q-count">60 Q</span>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="module-body">
+        <div class="module-grid">
+          <div class="module-col">
+            <div class="col-title knowledge"><span class="col-title-icon">📖</span>Required Knowledge</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-teal"></span>COUNT(*) vs COUNT(col) — COUNT(*) includes NULLs; COUNT(col) doesn't</li>
+              <li><span class="li-dot dot-teal"></span>SUM, AVG, MIN, MAX all ignore NULL values</li>
+              <li><span class="li-dot dot-teal"></span>GROUP BY groups rows with identical values; SELECT columns must be grouped or aggregated</li>
+              <li><span class="li-dot dot-teal"></span>HAVING filters groups after aggregation (WHERE filters rows before)</li>
+              <li><span class="li-dot dot-teal"></span>COUNT(DISTINCT col) counts unique non-NULL values</li>
+              <li><span class="li-dot dot-teal"></span>Aggregate functions return NULL for empty sets (except COUNT which returns 0)</li>
+              <li><span class="li-dot dot-teal"></span>GROUP BY on expressions: YEAR(date), DATE_FORMAT, LENGTH etc.</li>
+              <li><span class="li-dot dot-teal"></span>GROUP_CONCAT for concatenating grouped values</li>
+              <li><span class="li-dot dot-teal"></span>WITH ROLLUP for subtotals and grand totals</li>
+              <li><span class="li-dot dot-teal"></span>Conditional aggregation: SUM(CASE WHEN … THEN 1 ELSE 0 END)</li>
+            </ul>
+          </div>
+          <div class="module-col">
+            <div class="col-title skills"><span class="col-title-icon">⚙️</span>Required Skills</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-indigo"></span>Write GROUP BY queries that count, sum, or average per category</li>
+              <li><span class="li-dot dot-indigo"></span>Use HAVING to filter groups on aggregate values</li>
+              <li><span class="li-dot dot-indigo"></span>Detect duplicates using GROUP BY + HAVING COUNT > 1</li>
+              <li><span class="li-dot dot-indigo"></span>Write daily/monthly time-series aggregations</li>
+              <li><span class="li-dot dot-indigo"></span>Count items meeting a condition within a group (conditional SUM/CASE)</li>
+              <li><span class="li-dot dot-indigo"></span>Build test-result summary queries: pass rate, fail count, total per suite</li>
+              <li><span class="li-dot dot-indigo"></span>Find the top-N category by count or sum</li>
+              <li><span class="li-dot dot-indigo"></span>Explain why aggregate functions cannot appear in WHERE</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-full">
+          <div class="col-title traps" style="margin-bottom:12px"><span class="col-title-icon">⚠️</span>Common Traps in This Exam</div>
+          <div class="traps-row">
+            <div class="trap-card"><strong>Non-aggregated SELECT column</strong>SELECT dept, name, COUNT(*) without name in GROUP BY — invalid or non-deterministic. All SELECT columns must be grouped or aggregated.</div>
+            <div class="trap-card"><strong>WHERE on aggregate</strong>WHERE COUNT(*) > 5 is invalid. Aggregates are not computed at WHERE time. Use HAVING.</div>
+            <div class="trap-card"><strong>COUNT(*) vs SUM for empty set</strong>COUNT(*) returns 0 for an empty set; SUM returns NULL. Wrap SUM in COALESCE(SUM(...), 0).</div>
+            <div class="trap-card"><strong>Fanout inflates SUM</strong>Joining before aggregating in a one-to-many relationship inflates SUM results. Aggregate first, join second.</div>
+          </div>
+        </div>
+        <div class="study-tips">
+          <div class="study-tips-icon">💡</div>
+          <div class="study-tips-text"><strong>Study tip:</strong> Write a complete test-results reporting query from scratch: count tests by suite, calculate pass rates, filter to suites with failures only. This one exercise covers GROUP BY, HAVING, conditional aggregation, and COALESCE. The duplicate-detection pattern (GROUP BY + HAVING COUNT > 1) is a guaranteed exam topic — practise it on every table you can find.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAM 5 -->
+    <div class="exam-module" id="m5">
+      <div class="module-header" onclick="toggle(this)">
+        <div class="module-num">05</div>
+        <div class="module-icon">🪆</div>
+        <div class="module-meta">
+          <div class="module-title">Subqueries &amp; IN / EXISTS</div>
+          <div class="module-sub">Scalar, correlated, derived tables, CTEs, IN vs EXISTS, NOT IN NULL trap, ANY/ALL</div>
+        </div>
+        <div class="module-tags">
+          <span class="level-tag lt-junior">Junior</span>
+          <span class="q-count">60 Q</span>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="module-body">
+        <div class="module-grid">
+          <div class="module-col">
+            <div class="col-title knowledge"><span class="col-title-icon">📖</span>Required Knowledge</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-teal"></span>Types: scalar (one value), row, column, table (multi-row multi-col)</li>
+              <li><span class="li-dot dot-teal"></span>Correlated subquery: references outer query column; runs per outer row</li>
+              <li><span class="li-dot dot-teal"></span>Uncorrelated subquery: independent; runs once</li>
+              <li><span class="li-dot dot-teal"></span>Derived table: subquery in FROM clause, must have alias</li>
+              <li><span class="li-dot dot-teal"></span>CTE (WITH clause): named, reusable, defined before main query</li>
+              <li><span class="li-dot dot-teal"></span>Recursive CTE: base case UNION ALL recursive case for hierarchical data</li>
+              <li><span class="li-dot dot-teal"></span>IN vs = ANY (identical); NOT IN vs &lt;&gt; ALL (identical but NULL-unsafe)</li>
+              <li><span class="li-dot dot-teal"></span>EXISTS: Boolean — returns TRUE if subquery has any rows</li>
+              <li><span class="li-dot dot-teal"></span>NOT EXISTS is NULL-safe; NOT IN is not</li>
+              <li><span class="li-dot dot-teal"></span>Scalar subquery returning 0 rows = NULL; 2+ rows = error</li>
+            </ul>
+          </div>
+          <div class="module-col">
+            <div class="col-title skills"><span class="col-title-icon">⚙️</span>Required Skills</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-indigo"></span>Write a scalar subquery to compare a value against an aggregate (e.g. above average)</li>
+              <li><span class="li-dot dot-indigo"></span>Write an IN subquery to filter based on another table's values</li>
+              <li><span class="li-dot dot-indigo"></span>Write NOT EXISTS to safely find records with no matching child</li>
+              <li><span class="li-dot dot-indigo"></span>Build a derived table (subquery in FROM) with an alias</li>
+              <li><span class="li-dot dot-indigo"></span>Refactor nested subqueries into readable CTEs</li>
+              <li><span class="li-dot dot-indigo"></span>Explain when a correlated subquery is a performance risk and how to rewrite it</li>
+              <li><span class="li-dot dot-indigo"></span>Use EXISTS for existence checks in QA verification queries</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-full">
+          <div class="col-title traps" style="margin-bottom:12px"><span class="col-title-icon">⚠️</span>Common Traps in This Exam</div>
+          <div class="traps-row">
+            <div class="trap-card"><strong>NOT IN + NULL = empty result</strong>NOT IN(SELECT col …) returns no rows if col has any NULL. Always use NOT EXISTS for nullable subquery columns.</div>
+            <div class="trap-card"><strong>Scalar subquery returns 2+ rows</strong>A scalar subquery used in WHERE or SELECT must return exactly one row. Multiple rows cause a runtime error.</div>
+            <div class="trap-card"><strong>Correlated subquery performance</strong>Runs once per outer row. On a 100k-row table = 100k executions. Replace with JOIN or window function where possible.</div>
+            <div class="trap-card"><strong>IN vs EXISTS semantics</strong>IN compares values; EXISTS checks row existence. For large subquery results, EXISTS short-circuits at first match — generally faster.</div>
+          </div>
+        </div>
+        <div class="study-tips">
+          <div class="study-tips-icon">💡</div>
+          <div class="study-tips-text"><strong>Study tip:</strong> Memorise the NOT IN / NOT EXISTS difference — it will appear in the exam and is a real production bug source. Practise rewriting a correlated subquery as a JOIN and a nested subquery as a CTE. Understanding when to use each pattern (not just syntax) is what this exam tests.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAM 6 -->
+    <div class="exam-module" id="m6">
+      <div class="module-header" onclick="toggle(this)">
+        <div class="module-num">06</div>
+        <div class="module-icon">🚫</div>
+        <div class="module-meta">
+          <div class="module-title">NULL Handling &amp; Data Integrity</div>
+          <div class="module-sub">NULL semantics, COALESCE, NULLIF, three-valued logic, constraints, integrity checks</div>
+        </div>
+        <div class="module-tags">
+          <span class="level-tag lt-junior">Junior</span>
+          <span class="q-count">60 Q</span>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="module-body">
+        <div class="module-grid">
+          <div class="module-col">
+            <div class="col-title knowledge"><span class="col-title-icon">📖</span>Required Knowledge</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-teal"></span>NULL = unknown/missing — NOT zero, NOT empty string, NOT false</li>
+              <li><span class="li-dot dot-teal"></span>Three-valued logic: TRUE, FALSE, NULL — and its truth tables for AND, OR, NOT</li>
+              <li><span class="li-dot dot-teal"></span>NULL in arithmetic always yields NULL (NULL propagation)</li>
+              <li><span class="li-dot dot-teal"></span>COALESCE(a, b, c): first non-NULL argument</li>
+              <li><span class="li-dot dot-teal"></span>NULLIF(a, b): returns NULL if a = b, else returns a</li>
+              <li><span class="li-dot dot-teal"></span>IFNULL(a, b): MySQL-specific 2-arg version of COALESCE</li>
+              <li><span class="li-dot dot-teal"></span>NULL-safe equality operator &lt;=&gt; (spaceship)</li>
+              <li><span class="li-dot dot-teal"></span>Constraints: NOT NULL, UNIQUE (allows multiple NULLs in MySQL), PRIMARY KEY, FOREIGN KEY, CHECK</li>
+              <li><span class="li-dot dot-teal"></span>Referential integrity: FK must reference existing PK or be NULL</li>
+              <li><span class="li-dot dot-teal"></span>NULL in aggregate functions: all except COUNT(*) ignore NULL</li>
+            </ul>
+          </div>
+          <div class="module-col">
+            <div class="col-title skills"><span class="col-title-icon">⚙️</span>Required Skills</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-indigo"></span>Use COALESCE to replace NULL with a safe default in reports and calculations</li>
+              <li><span class="li-dot dot-indigo"></span>Use NULLIF to prevent division-by-zero errors</li>
+              <li><span class="li-dot dot-indigo"></span>Write queries that correctly detect NULL, empty string, and whitespace-only values</li>
+              <li><span class="li-dot dot-indigo"></span>Apply three-valued logic to predict query results involving NULL</li>
+              <li><span class="li-dot dot-indigo"></span>Write QA integrity checks that find: NULL required fields, orphan records, duplicate keys</li>
+              <li><span class="li-dot dot-indigo"></span>Explain the QA implications of each constraint type (NOT NULL, UNIQUE, FK)</li>
+              <li><span class="li-dot dot-indigo"></span>Detect data integrity violations across multiple tables using JOIN patterns</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-full">
+          <div class="col-title traps" style="margin-bottom:12px"><span class="col-title-icon">⚠️</span>Common Traps in This Exam</div>
+          <div class="traps-row">
+            <div class="trap-card"><strong>NULL ≠ 0 ≠ ''</strong>Each represents a different semantic state. NULL = unknown, 0 = zero, '' = empty known value. They compare and store differently.</div>
+            <div class="trap-card"><strong>NULL AND/OR logic</strong>NULL AND TRUE = NULL. NULL OR FALSE = NULL. NULL OR TRUE = TRUE. Memorise the truth table.</div>
+            <div class="trap-card"><strong>UNIQUE allows multiple NULLs</strong>In MySQL, a UNIQUE column can have multiple NULL rows because NULL != NULL.</div>
+            <div class="trap-card"><strong>IN (NULL, '') doesn't find NULLs</strong>IN uses = internally. NULL = NULL → NULL, not TRUE. Use IS NULL separately.</div>
+            <div class="trap-card"><strong>SUM of empty set = NULL</strong>Not 0. Always COALESCE(SUM(...), 0) in financial or count-based calculations.</div>
+          </div>
+        </div>
+        <div class="study-tips">
+          <div class="study-tips-icon">💡</div>
+          <div class="study-tips-text"><strong>Study tip:</strong> Draw the three-valued logic truth table and memorise it — this exam heavily tests NULL logical reasoning. Practise writing <code>COALESCE(SUM(amount), 0)</code> and <code>price / NULLIF(qty, 0)</code> until they feel natural. Run integrity checks on a real database and document what you find.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAM 7 -->
+    <div class="exam-module" id="m7">
+      <div class="module-header" onclick="toggle(this)">
+        <div class="module-num">07</div>
+        <div class="module-icon">📅</div>
+        <div class="module-meta">
+          <div class="module-title">Date &amp; Time Functions</div>
+          <div class="module-sub">NOW, CURDATE, DATE_ADD, DATEDIFF, DATE_FORMAT, TIMESTAMP, timezone handling</div>
+        </div>
+        <div class="module-tags">
+          <span class="level-tag lt-junior">Junior</span>
+          <span class="q-count">60 Q</span>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="module-body">
+        <div class="module-grid">
+          <div class="module-col">
+            <div class="col-title knowledge"><span class="col-title-icon">📖</span>Required Knowledge</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-teal"></span>NOW() → datetime; CURDATE() → date only; CURTIME() → time only</li>
+              <li><span class="li-dot dot-teal"></span>DATE_ADD(date, INTERVAL n unit) and DATE_SUB; valid units: SECOND, MINUTE, HOUR, DAY, WEEK, MONTH, YEAR</li>
+              <li><span class="li-dot dot-teal"></span>DATEDIFF(d1, d2): days as integer (d1 − d2)</li>
+              <li><span class="li-dot dot-teal"></span>TIMESTAMPDIFF(unit, start, end): difference in any unit</li>
+              <li><span class="li-dot dot-teal"></span>Extraction: YEAR, MONTH, DAY, HOUR, MINUTE, SECOND, DAYNAME, DAYOFWEEK, WEEKDAY, QUARTER</li>
+              <li><span class="li-dot dot-teal"></span>DATE_FORMAT(date, format_string) — format codes: %Y %m %d %H %i %s %W %M</li>
+              <li><span class="li-dot dot-teal"></span>STR_TO_DATE for parsing string dates</li>
+              <li><span class="li-dot dot-teal"></span>DATETIME vs TIMESTAMP: range, timezone behaviour, 2038 problem</li>
+              <li><span class="li-dot dot-teal"></span>LAST_DAY, MAKEDATE, PERIOD_DIFF, PERIOD_ADD</li>
+              <li><span class="li-dot dot-teal"></span>Using DATE() to strip time component for date-only comparison</li>
+            </ul>
+          </div>
+          <div class="module-col">
+            <div class="col-title skills"><span class="col-title-icon">⚙️</span>Required Skills</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-indigo"></span>Query records created today, in the last N days/hours/minutes</li>
+              <li><span class="li-dot dot-indigo"></span>Calculate the difference between two dates in days, hours, or minutes</li>
+              <li><span class="li-dot dot-indigo"></span>Group records by day, week, month, or year for time-series reports</li>
+              <li><span class="li-dot dot-indigo"></span>Format dates for display using DATE_FORMAT</li>
+              <li><span class="li-dot dot-indigo"></span>Find records from a specific month, quarter, or year</li>
+              <li><span class="li-dot dot-indigo"></span>Verify SLA compliance using DATEDIFF or TIMESTAMPDIFF</li>
+              <li><span class="li-dot dot-indigo"></span>Handle DATETIME vs DATE comparison pitfalls (time component truncation)</li>
+              <li><span class="li-dot dot-indigo"></span>Choose DATETIME vs TIMESTAMP for different storage requirements</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-full">
+          <div class="col-title traps" style="margin-bottom:12px"><span class="col-title-icon">⚠️</span>Common Traps in This Exam</div>
+          <div class="traps-row">
+            <div class="trap-card"><strong>BETWEEN with DATETIME</strong>BETWEEN '2024-01-01' AND '2024-01-31' misses records on Jan 31 after midnight. Use &lt; '2024-02-01' instead.</div>
+            <div class="trap-card"><strong>NOW() - 7 subtracts seconds</strong>NOW() - 7 subtracts 7 seconds, not 7 days. Always use INTERVAL: NOW() - INTERVAL 7 DAY.</div>
+            <div class="trap-card"><strong>MONTH() groups cross-year</strong>GROUP BY MONTH(date) groups January across all years together. Use DATE_FORMAT(date,'%Y-%m') for year-aware grouping.</div>
+            <div class="trap-card"><strong>2038 TIMESTAMP problem</strong>TIMESTAMP overflows in 2038. Use DATETIME for dates that may extend beyond that.</div>
+          </div>
+        </div>
+        <div class="study-tips">
+          <div class="study-tips-icon">💡</div>
+          <div class="study-tips-text"><strong>Study tip:</strong> Practice date range queries daily. Write one query each morning: find yesterday's records, find records from this week, find records more than 30 days old. Verify SLAs by computing DATEDIFF between created_at and resolved_at on a real bugs table. These are the exact queries you'll write in QA sprints.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAM 8 -->
+    <div class="exam-module" id="m8">
+      <div class="module-header" onclick="toggle(this)">
+        <div class="module-num">08</div>
+        <div class="module-icon">✅</div>
+        <div class="module-meta">
+          <div class="module-title">QA Data Verification Patterns</div>
+          <div class="module-sub">API result verification, test data cleanup, integrity checks, state machine validation</div>
+        </div>
+        <div class="module-tags">
+          <span class="level-tag lt-junior">Junior</span>
+          <span class="q-count">60 Q</span>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="module-body">
+        <div class="module-grid">
+          <div class="module-col">
+            <div class="col-title knowledge"><span class="col-title-icon">📖</span>Required Knowledge</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-teal"></span>POST → INSERT verification: find the created record by unique identifier</li>
+              <li><span class="li-dot dot-teal"></span>PUT/PATCH → UPDATE verification: select specific updated fields and compare</li>
+              <li><span class="li-dot dot-teal"></span>DELETE verification: COUNT should return 0 for the deleted ID</li>
+              <li><span class="li-dot dot-teal"></span>Bulk operation verification: count before and after, compare delta</li>
+              <li><span class="li-dot dot-teal"></span>Duplicate detection patterns (GROUP BY + HAVING)</li>
+              <li><span class="li-dot dot-teal"></span>Referential integrity checks (LEFT JOIN + WHERE IS NULL)</li>
+              <li><span class="li-dot dot-teal"></span>State machine validation: detect invalid status transitions</li>
+              <li><span class="li-dot dot-teal"></span>Soft-delete verification: row exists, deleted_at is set</li>
+              <li><span class="li-dot dot-teal"></span>Test data cleanup strategies: time-window + marker patterns</li>
+              <li><span class="li-dot dot-teal"></span>Idempotency verification: same result after N calls</li>
+            </ul>
+          </div>
+          <div class="module-col">
+            <div class="col-title skills"><span class="col-title-icon">⚙️</span>Required Skills</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-indigo"></span>Write a DB verification query for any CRUD API call</li>
+              <li><span class="li-dot dot-indigo"></span>Detect data quality issues: NULL required fields, orphans, duplicates, status mismatches</li>
+              <li><span class="li-dot dot-indigo"></span>Verify calculated fields (e.g. discounted price, total = sum of items)</li>
+              <li><span class="li-dot dot-indigo"></span>Confirm cascade operations (CASCADE DELETE, related table updates)</li>
+              <li><span class="li-dot dot-indigo"></span>Write safe test data cleanup queries with correct WHERE conditions</li>
+              <li><span class="li-dot dot-indigo"></span>Verify audit log entries were created correctly</li>
+              <li><span class="li-dot dot-indigo"></span>Detect test data pollution in production-like environments</li>
+              <li><span class="li-dot dot-indigo"></span>Write production-safe verification queries (LIMIT, read-only, specific WHERE)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-full">
+          <div class="col-title traps" style="margin-bottom:12px"><span class="col-title-icon">⚠️</span>Common Traps in This Exam</div>
+          <div class="traps-row">
+            <div class="trap-card"><strong>SELECT * for verification</strong>Too broad — schema changes silently add columns and break comparisons. Select specific fields that the API actually returns.</div>
+            <div class="trap-card"><strong>No WHERE on cleanup DELETE</strong>DELETE FROM table without WHERE deletes everything. Always combine data marker AND time window in cleanup queries.</div>
+            <div class="trap-card"><strong>Trust the API count</strong>API-reported counts (total_count in pagination) may differ from actual DB count. Always verify with a direct COUNT(*) query.</div>
+            <div class="trap-card"><strong>Missing float tolerance</strong>Comparing float calculations with = fails due to precision. Use ABS(calculated - stored) &lt; 0.01 for financial values.</div>
+          </div>
+        </div>
+        <div class="study-tips">
+          <div class="study-tips-icon">💡</div>
+          <div class="study-tips-text"><strong>Study tip:</strong> This is the most practically important exam. After every API test you run, write a SQL query to verify the database state. Build a personal library of 10–15 "template" verification queries you can adapt quickly. The exam simulates real QA scenarios — your SQL must be both correct and safe to run on shared environments.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAM 9 -->
+    <div class="exam-module" id="m9">
+      <div class="module-header" onclick="toggle(this)">
+        <div class="module-num">09</div>
+        <div class="module-icon">⚡</div>
+        <div class="module-meta">
+          <div class="module-title">Advanced SQL</div>
+          <div class="module-sub">CASE expressions, UNION, Window Functions (ROW_NUMBER, RANK, LAG, LEAD, SUM OVER), CTEs, string/numeric functions</div>
+        </div>
+        <div class="module-tags">
+          <span class="level-tag lt-advanced">Junior+</span>
+          <span class="q-count">60 Q</span>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="module-body">
+        <div class="module-grid">
+          <div class="module-col">
+            <div class="col-title knowledge"><span class="col-title-icon">📖</span>Required Knowledge</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-teal"></span>CASE WHEN … THEN … ELSE … END — evaluated top-to-bottom, first match wins</li>
+              <li><span class="li-dot dot-teal"></span>CASE inside aggregates (conditional SUM/COUNT)</li>
+              <li><span class="li-dot dot-teal"></span>UNION (deduplicate) vs UNION ALL (keep all rows) — column count and type requirements</li>
+              <li><span class="li-dot dot-teal"></span>Window function syntax: function() OVER (PARTITION BY … ORDER BY …)</li>
+              <li><span class="li-dot dot-teal"></span>ROW_NUMBER: always unique; RANK: gaps for ties; DENSE_RANK: no gaps</li>
+              <li><span class="li-dot dot-teal"></span>LAG(col, n) and LEAD(col, n): access previous/next row values</li>
+              <li><span class="li-dot dot-teal"></span>SUM/AVG OVER with ORDER BY creates running totals</li>
+              <li><span class="li-dot dot-teal"></span>NTILE(n): distributes rows into n equal buckets</li>
+              <li><span class="li-dot dot-teal"></span>Window frames: ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</li>
+              <li><span class="li-dot dot-teal"></span>FIRST_VALUE, LAST_VALUE, PERCENT_RANK, CUME_DIST</li>
+              <li><span class="li-dot dot-teal"></span>String functions: CONCAT_WS, SUBSTRING_INDEX, LOCATE, LPAD, REPLACE, REGEXP_REPLACE</li>
+              <li><span class="li-dot dot-teal"></span>Numeric: TRUNCATE (no rounding), FORMAT (thousands separator), SIGN, GREATEST, LEAST</li>
+            </ul>
+          </div>
+          <div class="module-col">
+            <div class="col-title skills"><span class="col-title-icon">⚙️</span>Required Skills</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-indigo"></span>Write CASE expressions for categorisation and conditional output</li>
+              <li><span class="li-dot dot-indigo"></span>Use CASE inside aggregates to count/sum by condition (pivot pattern)</li>
+              <li><span class="li-dot dot-indigo"></span>Choose UNION vs UNION ALL for correct deduplication behaviour</li>
+              <li><span class="li-dot dot-indigo"></span>Use ROW_NUMBER to deduplicate and get latest-per-group</li>
+              <li><span class="li-dot dot-indigo"></span>Choose between ROW_NUMBER, RANK, DENSE_RANK based on tie-handling needs</li>
+              <li><span class="li-dot dot-indigo"></span>Use LAG and LEAD for trend detection and regression analysis</li>
+              <li><span class="li-dot dot-indigo"></span>Build a running total using SUM OVER with ORDER BY</li>
+              <li><span class="li-dot dot-indigo"></span>Construct a recursive CTE for hierarchical data</li>
+              <li><span class="li-dot dot-indigo"></span>Pivot a table using conditional aggregation (CASE + GROUP BY)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-full">
+          <div class="col-title traps" style="margin-bottom:12px"><span class="col-title-icon">⚠️</span>Common Traps in This Exam</div>
+          <div class="traps-row">
+            <div class="trap-card"><strong>RANK vs DENSE_RANK ties</strong>RANK skips numbers after ties (1,1,3). DENSE_RANK doesn't (1,1,2). Know which is needed for leaderboards vs fair rankings.</div>
+            <div class="trap-card"><strong>PARTITION BY doesn't filter</strong>PARTITION BY groups for window calculation — it does NOT remove rows from the result. Use WHERE/HAVING to filter rows.</div>
+            <div class="trap-card"><strong>LAST_VALUE frame issue</strong>LAST_VALUE requires ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING to work correctly — default frame stops at current row.</div>
+            <div class="trap-card"><strong>UNION column requirements</strong>Both SELECT statements must have the same number of columns and compatible types, or UNION throws an error.</div>
+            <div class="trap-card"><strong>TRUNCATE vs ROUND</strong>TRUNCATE(3.9, 0) = 3 (no rounding). ROUND(3.9, 0) = 4. They are not interchangeable.</div>
+          </div>
+        </div>
+        <div class="study-tips">
+          <div class="study-tips-icon">💡</div>
+          <div class="study-tips-text"><strong>Study tip:</strong> Window functions are the hardest topic in this series — dedicate at least 3 study sessions to them alone. Start with ROW_NUMBER for deduplication, then learn RANK/DENSE_RANK for leaderboards, then LAG/LEAD for trend detection. The "top N per group" pattern using ROW_NUMBER in a subquery is the most frequently tested window function use case.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAM 10 -->
+    <div class="exam-module" id="m10">
+      <div class="module-header" onclick="toggle(this)">
+        <div class="module-num">10</div>
+        <div class="module-icon">🏆</div>
+        <div class="module-meta">
+          <div class="module-title">Comprehensive Mixed Review</div>
+          <div class="module-sub">All topics combined — multi-step reasoning, real QA scenarios, query design decisions</div>
+        </div>
+        <div class="module-tags">
+          <span class="level-tag lt-junior">All Levels</span>
+          <span class="q-count">60 Q</span>
+        </div>
+        <div class="chevron">▼</div>
+      </div>
+      <div class="module-body">
+        <div class="module-grid">
+          <div class="module-col">
+            <div class="col-title knowledge"><span class="col-title-icon">📖</span>Required Knowledge</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-teal"></span>All topics from Exams 1–9 are in scope — this is a full review</li>
+              <li><span class="li-dot dot-teal"></span>Logical query writing: SELECT the right thing, from the right table, with the right condition</li>
+              <li><span class="li-dot dot-teal"></span>Selecting the correct SQL technique for a given problem (JOIN vs subquery vs window function)</li>
+              <li><span class="li-dot dot-teal"></span>Multi-table data scenarios: order + payment + user + product</li>
+              <li><span class="li-dot dot-teal"></span>Data analysis: distribution, trend, top-N, deduplication</li>
+              <li><span class="li-dot dot-teal"></span>QA-specific scenarios: API verification, cleanup, integrity, audit</li>
+              <li><span class="li-dot dot-teal"></span>Production-safe query habits: LIMIT, specific WHERE, read-only mindset</li>
+            </ul>
+          </div>
+          <div class="module-col">
+            <div class="col-title skills"><span class="col-title-icon">⚙️</span>Required Skills</div>
+            <ul class="module-list">
+              <li><span class="li-dot dot-indigo"></span>Analyse a QA scenario and write the correct SQL to verify it</li>
+              <li><span class="li-dot dot-indigo"></span>Choose the most appropriate SQL technique among multiple valid options</li>
+              <li><span class="li-dot dot-indigo"></span>Detect anti-patterns and explain why they're wrong (SELECT *, = NULL, WHERE aggregate)</li>
+              <li><span class="li-dot dot-indigo"></span>Write queries that are readable, maintainable, and safe for shared environments</li>
+              <li><span class="li-dot dot-indigo"></span>Combine aggregation, JOINs, and filtering in a single query for complex reports</li>
+              <li><span class="li-dot dot-indigo"></span>Verify data migrations, bulk operations, and state transitions</li>
+              <li><span class="li-dot dot-indigo"></span>Understand query execution order and its implications for filtering and aliasing</li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-full">
+          <div class="col-title traps" style="margin-bottom:12px"><span class="col-title-icon">⚠️</span>Common Traps in This Exam</div>
+          <div class="traps-row">
+            <div class="trap-card"><strong>Technique selection</strong>Choosing JOIN when EXISTS is faster, or correlated subquery when a window function is cleaner. Know when to use each.</div>
+            <div class="trap-card"><strong>Clause order errors</strong>This exam combines multiple concepts — getting the order of SELECT/FROM/WHERE/GROUP BY/HAVING/ORDER BY wrong causes syntax errors.</div>
+            <div class="trap-card"><strong>NULL in complex queries</strong>NULL propagation across JOINs, aggregates, and CASE expressions produces surprising results. Trace NULL through each operation step by step.</div>
+            <div class="trap-card"><strong>Ignoring readability</strong>A correct but unreadable query is a QA liability. Readable SQL uses aliases, line breaks, and comments — and this exam rewards that understanding.</div>
+          </div>
+        </div>
+        <div class="study-tips">
+          <div class="study-tips-icon">💡</div>
+          <div class="study-tips-text"><strong>Study tip:</strong> Treat this exam as a simulation of your real QA work. Take the exam after a 1-week break from active studying — if you need to look things up to pass, your foundations aren't solid enough yet. The best preparation is writing real SQL daily on real data, not just practising quizzes.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end exam-modules -->
+</section>
+
+<!-- ── GRADING ── -->
+<section class="section" id="grading">
+  <div class="section-label">Assessment</div>
+  <h2 class="section-title">Grading Scale</h2>
+  <p class="section-desc">Each exam is graded independently. Achieve 70% or above in all 10 exams to be considered proficient. Certification requires passing all 10.</p>
+
+  <div class="score-grid">
+    <div class="score-card grade-s">
+      <div class="score-grade">S</div>
+      <div class="score-range">90–100%</div>
+      <div class="score-label">Mentor-level mastery. Ready to teach this topic.</div>
+    </div>
+    <div class="score-card grade-a">
+      <div class="score-grade">A</div>
+      <div class="score-range">80–89%</div>
+      <div class="score-label">Excellent. Production-ready without guidance.</div>
+    </div>
+    <div class="score-card grade-b">
+      <div class="score-grade">B</div>
+      <div class="score-range">70–79%</div>
+      <div class="score-label">Passing. Competent with minor gaps to close.</div>
+    </div>
+    <div class="score-card grade-c">
+      <div class="score-grade">C</div>
+      <div class="score-range">60–69%</div>
+      <div class="score-label">Below pass. Review wrong answers and retake.</div>
+    </div>
+    <div class="score-card grade-f">
+      <div class="score-grade">F</div>
+      <div class="score-range">0–59%</div>
+      <div class="score-label">Needs significant study. Revisit fundamentals.</div>
+    </div>
+  </div>
+
+  <div style="background:var(--surf1);border:1px solid var(--border);border-radius:10px;padding:24px;margin-top:0">
+    <div style="font-weight:700;margin-bottom:12px;font-size:15px">Retake Policy</div>
+    <div style="font-size:13px;color:var(--muted2);line-height:1.7">
+      There is no limit on retakes. However, after a failed attempt, take at least <strong style="color:var(--text)">48 hours</strong> to review every wrong answer before retaking — the explanations provided after each question are the most efficient study material available.
+      Retaking immediately without studying wrong answers is not effective and is a <strong style="color:var(--red)">common mistake</strong>.
+    </div>
+  </div>
+</section>
+
+<!-- ── CHECKLIST ── -->
+<section class="section" id="checklist">
+  <div class="section-label">Self-Assessment</div>
+  <h2 class="section-title">Pre-Exam Readiness Checklist</h2>
+  <p class="section-desc">Check off each item before sitting the corresponding exam group. If you can't check it honestly, study that topic first.</p>
+
+  <div class="checklist-grid">
+    <div class="checklist-group">
+      <div class="checklist-header" style="border-top:3px solid var(--green);background:var(--green-dim)">
+        <span>🟢</span> Exams 1–2 Readiness (Fresher)
+      </div>
+      <div class="checklist-items">
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can write a SELECT with specific columns, aliases, ORDER BY, and LIMIT without looking it up</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I know that ORDER BY sorts DESC by default for… wait, no — ASC is default. I know this.</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can explain why SELECT * is not ideal for QA verification</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I use IS NULL instead of = NULL without hesitation</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I know the difference between BETWEEN (inclusive) and strict &gt; &lt; comparisons</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I know what % and _ mean in LIKE patterns</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I know AND has higher precedence than OR and use parentheses when mixing them</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can explain the NOT IN + NULL = empty result trap</label>
+      </div>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-header" style="border-top:3px solid var(--teal);background:var(--teal-dim)">
+        <span>🔵</span> Exams 3–4 Readiness (Fresher→Junior)
+      </div>
+      <div class="checklist-items">
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can draw the Venn diagram for INNER, LEFT, and FULL OUTER JOIN</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can write the anti-join pattern to find orphan records</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I know that WHERE on a right-table column converts LEFT JOIN to INNER JOIN behaviour</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I know what GROUP BY does and that all SELECT columns must be grouped or aggregated</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I use HAVING for aggregate conditions (not WHERE)</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I know COUNT(*) returns 0 for empty sets but SUM returns NULL</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can write a duplicate detection query: GROUP BY + HAVING COUNT > 1</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can write a query that counts records by status with pass/fail breakdown</label>
+      </div>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-header" style="border-top:3px solid var(--amber);background:var(--amber-dim)">
+        <span>🟡</span> Exams 5–6 Readiness (Junior)
+      </div>
+      <div class="checklist-items">
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can write a scalar subquery in WHERE (e.g. WHERE salary > (SELECT AVG…))</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can explain the difference between IN and EXISTS for performance</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I always use NOT EXISTS instead of NOT IN when the subquery may contain NULLs</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can write a CTE and explain why it's more readable than a nested subquery</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I know NULL propagation: NULL + 5 = NULL, NULL OR TRUE = TRUE, NULL AND FALSE = FALSE</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I use COALESCE to replace NULL with a default value in calculations</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I use NULLIF to prevent division-by-zero</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can name all database constraint types and explain what each enforces</label>
+      </div>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-header" style="border-top:3px solid var(--amber);background:var(--amber-dim)">
+        <span>🟡</span> Exams 7–8 Readiness (Junior)
+      </div>
+      <div class="checklist-items">
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I know the difference between NOW(), CURDATE(), and CURTIME()</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I use NOW() - INTERVAL 7 DAY (not NOW() - 7) for date arithmetic</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can group records by month correctly for multi-year data</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I know the DATETIME vs TIMESTAMP difference and when to use each</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">After every API test, I write a SQL query to verify the database state</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can write cleanup queries that target only test data (time window + marker)</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can verify that a soft-delete preserved the row with deleted_at set</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I know why I should use ABS(calc - stored) &lt; 0.01 for float comparisons</label>
+      </div>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-header" style="border-top:3px solid var(--indigo);background:var(--indigo-dim)">
+        <span>🟣</span> Exams 9–10 Readiness (Junior+)
+      </div>
+      <div class="checklist-items">
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can write CASE WHEN with multiple conditions and use it inside an aggregate</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I know the difference between UNION and UNION ALL and when to use each</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can write ROW_NUMBER() OVER (PARTITION BY … ORDER BY …) to get latest-per-group</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can explain the difference between ROW_NUMBER, RANK, and DENSE_RANK for tied values</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can use LAG() to compare a value to the previous row's value</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can build a running total using SUM() OVER (ORDER BY …)</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I can simulate PIVOT in MySQL using CASE + GROUP BY</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">Given a QA scenario, I can choose the right SQL technique without being told which one to use</label>
+      </div>
+    </div>
+
+    <div class="checklist-group">
+      <div class="checklist-header" style="border-top:3px solid var(--muted2)">
+        <span>🔒</span> Production-Safe SQL Habits
+      </div>
+      <div class="checklist-items">
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I always add LIMIT when running exploratory queries on large tables</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I never run DELETE or UPDATE without a WHERE clause</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I always run a SELECT first to preview what a DELETE/UPDATE will affect</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I use specific column names instead of SELECT * in verification queries</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I use meaningful table aliases that describe the table's role in the query</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I know to use EXPLAIN to check if my query is using indexes</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I avoid running heavy queries during peak hours on shared environments</label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)">I document my verification queries in a personal SQL library for reuse</label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" style="margin-top:60px"></div>
+
+</div><!-- end content -->
+
+<footer>
+  <span>/* SQL Examination Syllabus */</span> · QC Mentor Program · 10 Exams · 600 Questions · Pass ≥ 70%
+</footer>
+
+<script>
+function toggle(header) {
+  const module = header.closest('.exam-module');
+  module.classList.toggle('open');
+}
+
+function toggleCheck(input) {
+  const label = input.closest('.check-item');
+  label.classList.toggle('checked', input.checked);
+}
+
+// Highlight nav on scroll
+const sections = document.querySelectorAll('[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+sections.forEach(s => observer.observe(s));
+
+// Open first module by default
+document.querySelector('.exam-module').classList.add('open');
+</script>
+</body>
+</html>
