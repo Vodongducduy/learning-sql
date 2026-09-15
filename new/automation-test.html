@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Lộ trình thực hành Automation Testing 14 ngày dành cho người mới">
+<title>Automation Testing Foundation | 14 ngày thực hành</title>
+<style>
+:root{--bg:#f4f7fb;--panel:#fff;--panel2:#f8fafc;--text:#172033;--muted:#637083;--brand:#315ae8;--brand2:#6c4df6;--line:#dce3ee;--code:#101827;--success:#087f5b;--warn:#b66800;--shadow:0 10px 35px rgba(31,48,86,.10);--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+body.dark{--bg:#0b1020;--panel:#121a2b;--panel2:#172136;--text:#e9eef8;--muted:#a9b5ca;--line:#28354b;--code:#080d17;--shadow:0 12px 38px rgba(0,0,0,.3)}
+button,input{font:inherit}button{cursor:pointer}.top-nav{position:fixed;top:16px;right:20px;z-index:20;display:flex;gap:8px;padding:6px;background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:8px;backdrop-filter:blur(14px);box-shadow:0 10px 25px rgba(31,48,86,.08)}body.dark .top-nav{background:rgba(18,26,43,.88)}.top-nav a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:750;padding:7px 10px;border:1px solid transparent;border-radius:6px}.top-nav a:hover,.top-nav a.active{color:var(--brand);background:var(--panel2);border-color:var(--line)}.app{display:grid;grid-template-columns:320px minmax(0,1fr);min-height:100vh}aside{position:sticky;top:0;height:100vh;overflow:auto;background:var(--panel);border-right:1px solid var(--line);padding:24px 18px;z-index:5}.brand{display:flex;gap:12px;align-items:center;margin-bottom:20px}.logo{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:white;font-weight:900}.brand h1{font-size:16px;line-height:1.25;margin:0}.brand p{font-size:12px;margin:3px 0 0;color:var(--muted)}.progress-card{padding:14px;border:1px solid var(--line);background:var(--panel2);border-radius:14px;margin-bottom:16px}.progress-row{display:flex;justify-content:space-between;font-size:13px;font-weight:700}.progress-track{height:8px;background:var(--line);border-radius:999px;margin-top:9px;overflow:hidden}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--brand),#38bdf8);transition:.25s}.search{width:100%;padding:11px 13px;border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:12px;margin-bottom:12px}.nav-list{display:grid;gap:6px}.nav-item{width:100%;display:grid;grid-template-columns:34px 1fr;text-align:left;align-items:center;gap:8px;padding:10px;border:0;border-radius:12px;background:transparent;color:var(--text)}.nav-item:hover,.nav-item.active{background:color-mix(in srgb,var(--brand) 11%,var(--panel));color:var(--brand)}.nav-item span{font-size:12px;color:var(--muted)}.nav-item b{font-size:13px;line-height:1.25}.aside-actions{display:flex;gap:8px;margin-top:16px}.icon-btn{flex:1;padding:9px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--text)}main{min-width:0}.hero{padding:64px clamp(24px,6vw,86px);background:linear-gradient(135deg,#1938a5,#6c4df6 65%,#11a8c7);color:white}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;opacity:.85}.hero h1{font-size:clamp(32px,5vw,64px);line-height:1.03;max-width:900px;margin:14px 0}.hero p{max-width:760px;font-size:18px;opacity:.9}.hero-stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.stat{padding:12px 16px;background:#ffffff20;border:1px solid #ffffff36;border-radius:14px;backdrop-filter:blur(8px)}.stat strong{display:block;font-size:18px}.content{max-width:1040px;margin:auto;padding:38px 30px 80px}.intro,.lesson{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(22px,4vw,48px);box-shadow:var(--shadow);margin-bottom:26px}.lesson{display:none}.lesson.active{display:block;animation:fade .25s ease}@keyframes fade{from{opacity:.4;transform:translateY(5px)}}.lesson-top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:18px;border-bottom:1px solid var(--line)}.lesson-badge{padding:6px 11px;border-radius:999px;background:#315ae818;color:var(--brand);font-size:13px;font-weight:800}.complete-label{display:flex;align-items:center;gap:8px;color:var(--success);font-weight:750;font-size:14px}.complete-check{width:18px;height:18px;accent-color:var(--success)}h1,h2,h3{line-height:1.25;scroll-margin-top:20px}.lesson h1{font-size:32px;margin-top:26px}h2{font-size:25px;margin-top:36px}h3{font-size:19px;margin-top:28px}p,li{color:var(--text)}blockquote{margin:22px 0;padding:14px 18px;border-left:4px solid var(--warn);background:#ffb02015;border-radius:0 12px 12px 0}code{font-family:"Cascadia Code",Consolas,monospace;font-size:.92em}:not(pre)>code{background:var(--panel2);border:1px solid var(--line);padding:2px 6px;border-radius:6px;color:#c026d3}.code-shell{margin:18px 0;border-radius:14px;overflow:hidden;background:var(--code);box-shadow:0 8px 20px #0002}.code-toolbar{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;background:#1c2739;color:#b8c5d9;font-size:11px;font-weight:800;letter-spacing:.08em}.copy-btn{border:1px solid #40506a;background:#27344a;color:white;border-radius:7px;padding:4px 9px;font-size:12px}pre{margin:0;padding:18px;overflow:auto;color:#d7e2f2;line-height:1.55;tab-size:2}pre code{font-size:13px}a{color:var(--brand)}hr{border:0;border-top:1px solid var(--line);margin:35px 0}ul,ol{padding-left:25px}.lesson-nav{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}.lesson-nav button{padding:11px 15px;border:1px solid var(--line);border-radius:11px;background:var(--panel2);color:var(--text);font-weight:750}.empty{display:none;padding:16px;text-align:center;color:var(--muted)}mark{background:#fde68a;color:#1f2937;border-radius:3px;padding:0 2px}.mobile-toggle{display:none;position:fixed;right:16px;bottom:16px;z-index:10;border:0;width:48px;height:48px;border-radius:50%;background:var(--brand);color:white;box-shadow:var(--shadow)}
+@media(max-width:900px){.top-nav{left:16px;right:16px;justify-content:center;flex-wrap:wrap}.app{grid-template-columns:1fr}aside{position:fixed;left:-330px;width:310px;transition:.25s;box-shadow:var(--shadow)}aside.open{left:0}.mobile-toggle{display:block}.hero{padding:88px 24px 45px}.content{padding:24px 14px 70px}.intro,.lesson{padding:22px}.lesson h1{font-size:26px}}
+@media print{.top-nav,aside,.mobile-toggle,.lesson-nav,.copy-btn,.complete-label{display:none!important}.app{display:block}.hero{background:white;color:black;padding:20px}.lesson{display:block!important;box-shadow:none;break-inside:avoid;border:0}.content{max-width:none;padding:0}}
+</style>
+</head>
+<body>
+<nav class="top-nav" aria-label="Primary navigation">
+  <a href="../sql.html">SQL</a>
+  <a href="../demo-syllabus.html">Syllabus</a>
+  <a href="automation-test.html" class="active">Automation Test</a>
+</nav>
+<div class="app">
+<aside id="sidebar">
+  <div class="brand"><div class="logo">AT</div><div><h1>Automation Testing Foundation</h1><p>14 ngày thực hành cho người mới</p></div></div>
+  <div class="progress-card"><div class="progress-row"><span>Tiến độ</span><span id="progressText">0/14 ngày</span></div><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div></div>
+  <input class="search" id="search" type="search" placeholder="Tìm trong khóa học..." aria-label="Tìm kiếm">
+  <div class="nav-list" id="navList"><button class="nav-item" data-target="lesson-1"><span>01</span><b>Cài môi trường và hiểu testcase đầu tiên</b></button><button class="nav-item" data-target="lesson-2"><span>02</span><b>TypeScript tối thiểu để đọc automation test</b></button><button class="nav-item" data-target="lesson-3"><span>03</span><b>Viết test tạo Todo đầu tiên</b></button><button class="nav-item" data-target="lesson-4"><span>04</span><b>Locator cơ bản và cách suy luận</b></button><button class="nav-item" data-target="lesson-5"><span>05</span><b>Actions, assertions và auto-wait</b></button><button class="nav-item" data-target="lesson-6"><span>06</span><b>Positive, negative và test isolation</b></button><button class="nav-item" data-target="lesson-7"><span>07</span><b>Debugging checkpoint</b></button><button class="nav-item" data-target="lesson-8"><span>08</span><b>Page Object Model cơ bản</b></button><button class="nav-item" data-target="lesson-9"><span>09</span><b>Test data và config</b></button><button class="nav-item" data-target="lesson-10"><span>10</span><b>Gherkin và Cucumber cơ bản</b></button><button class="nav-item" data-target="lesson-11"><span>11</span><b>Mapping Gherkin sang step definition</b></button><button class="nav-item" data-target="lesson-12"><span>12</span><b>Mini project</b></button><button class="nav-item" data-target="lesson-13"><span>13</span><b>Code review và bug isolation</b></button><button class="nav-item" data-target="lesson-14"><span>14</span><b>Final assessment</b></button></div>
+  <div class="empty" id="empty">Không tìm thấy bài học.</div>
+  <div class="aside-actions"><button class="icon-btn" id="themeBtn">Đổi giao diện</button><button class="icon-btn" onclick="window.print()">In</button></div>
+</aside>
+<main>
+  <header class="hero"><div class="eyebrow">Beginner track · TypeScript · Playwright · Cucumber</div><h1>Từ dòng code đầu tiên đến một automation suite cơ bản</h1><p>Giải thích theo từng dòng, mô phỏng runtime, bài tập có hướng suy luận, bài debug và tiêu chí hoàn thành mỗi ngày.</p><div class="hero-stats"><div class="stat"><strong>14 ngày</strong><span>Lộ trình có cấu trúc</span></div><div class="stat"><strong>~30 giờ</strong><span>Thực hành tập trung</span></div><div class="stat"><strong>5+ tests</strong><span>Mini project cuối khóa</span></div><div class="stat"><strong>Offline</strong><span>Một file HTML</span></div></div></header>
+  <div class="content">
+    <section class="intro" id="course-intro"><h1 id="l-tr-nh-th-c-h-nh-automation-testing-trong-14-ng-y-1">Lộ trình thực hành Automation Testing trong 14 ngày</h1>
+<p>&gt; **Đối tượng:** Học viên mới, chưa từng viết test automation hoặc mới biết TypeScript ở mức rất cơ bản.  </p>
+<p>&gt; **Công nghệ:** TypeScript, Playwright Test, Cucumber ở mức nhập môn.  </p>
+<p>&gt; **Thời lượng:** 14 ngày, khoảng 2 giờ mỗi ngày; ngày mini project có thể cần 3 giờ.  </p>
+<p>&gt; **Mục tiêu:** Sau khóa học, học viên có thể đọc, chạy, debug, sửa và viết thêm các UI automation test cơ bản trong một dự án có sẵn.</p>
+<p>---</p>
+<h2 id="1-ph-m-vi-kh-a-h-c-2">1. Phạm vi khóa học</h2>
+<h3 id="1-1-n-i-dung-b-t-bu-c-th-c-h-nh-3">1.1. Nội dung bắt buộc thực hành</h3>
+<ul>
+<li>TypeScript tối thiểu để đọc và viết test.</li>
+<li>Tạo và chạy project Playwright.</li>
+<li>Hiểu một test chạy từ đầu đến cuối như thế nào.</li>
+<li>Locator cơ bản: `getByRole`, `getByLabel`, `getByText`, `getByPlaceholder`, `getByTestId`.</li>
+<li>Action cơ bản: `goto`, `fill`, `click`, `press`, `check`, `uncheck`.</li>
+<li>Assertion cơ bản: `toBeVisible`, `toHaveText`, `toHaveCount`, `toBeChecked`, `toHaveURL`.</li>
+<li>Auto-wait và nguyên tắc không lạm dụng delay cứng.</li>
+<li>Đọc HTML report, chạy headed, UI mode, debug mode và trace.</li>
+<li>Page Object Model ở mức cơ bản.</li>
+<li>Gherkin và Cucumber ở mức đọc, viết và mapping được một flow.</li>
+<li>Mini project gồm ít nhất 5 test case độc lập.</li>
+</ul>
+<h3 id="1-2-n-i-dung-ch-c-bi-t-4">1.2. Nội dung chỉ đọc để biết</h3>
+<ul>
+<li>XPath axes và CSS selector phức tạp.</li>
+<li>Locator chaining, `filter`, `nth`, iframe.</li>
+<li>Upload, download, nhiều tab, drag and drop.</li>
+<li>Custom fixture, global setup, storage state.</li>
+<li>API testing, network mocking.</li>
+<li>Parallel execution, sharding, retry strategy.</li>
+<li>Report tùy biến và CI/CD.</li>
+</ul>
+<p>---</p>
+<h2 id="2-k-t-qu-u-ra-sau-14-ng-y-5">2. Kết quả đầu ra sau 14 ngày</h2>
+<p>Học viên đạt yêu cầu khi có thể tự thực hiện chuỗi công việc sau:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Nhận test case
+→ Xác định precondition
+→ Xác định test data
+→ Xác định hành động của người dùng
+→ Xác định kết quả cần kiểm tra
+→ Chọn locator
+→ Viết Playwright test
+→ Chạy test
+→ Đọc lỗi nếu test fail
+→ Dùng report hoặc trace để điều tra
+→ Sửa đúng nguyên nhân</pre></div>
+<p>Học viên phải tạo được project có cấu trúc tối thiểu:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">automation-foundation/
+├── pages/
+│   └── TodoPage.ts
+├── tests/
+│   ├── first-test.spec.ts
+│   ├── todo-basic.spec.ts
+│   ├── todo-negative.spec.ts
+│   └── todo-pom.spec.ts
+├── test-data/
+│   └── todo-data.ts
+├── features/
+│   └── todo.feature
+├── steps/
+│   └── todo.steps.ts
+├── notes/
+│   └── daily-learning.md
+├── playwright.config.ts
+├── package.json
+└── README.md</pre></div>
+<p>---</p>
+<h1 id="ph-n-i-ki-n-th-c-n-n-t-ng-cho-ng-i-m-i-6">PHẦN I. KIẾN THỨC NỀN TẢNG CHO NGƯỜI MỚI</h1>
+<h2 id="3-tr-c-khi-vi-t-test-hi-u-test-automation-l-g-7">3. Trước khi viết test: Hiểu test automation là gì</h2>
+<p>Một test UI tự động thường có ba phần:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Arrange: Chuẩn bị trạng thái ban đầu
+Act: Thực hiện hành động
+Assert: Kiểm tra kết quả</code></pre></div>
+<p>Ví dụ nghiệp vụ:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Arrange: Người dùng mở ứng dụng Todo.
+Act: Người dùng nhập &quot;Learn Playwright&quot; và nhấn Enter.
+Assert: Todo &quot;Learn Playwright&quot; xuất hiện trên màn hình.</code></pre></div>
+<p>Tương ứng với code:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await page.goto(&#x27;https://demo.playwright.dev/todomvc/&#x27;);
+
+await page.getByPlaceholder(&#x27;What needs to be done?&#x27;).fill(&#x27;Learn Playwright&#x27;);
+await page.getByPlaceholder(&#x27;What needs to be done?&#x27;).press(&#x27;Enter&#x27;);
+
+await expect(page.getByText(&#x27;Learn Playwright&#x27;)).toBeVisible();</code></pre></div>
+<h3 id="3-1-i-u-g-x-y-ra-khi-ch-y-test-8">3.1. Điều gì xảy ra khi chạy test?</h3>
+<p>Khi chạy lệnh:</p>
+<div class="code-shell"><div class="code-toolbar"><span>BASH</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-bash">npx playwright test</code></pre></div>
+<p>Playwright thực hiện lần lượt:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">1. Đọc file playwright.config.ts.
+2. Tìm các file test theo cấu hình, thường là *.spec.ts.
+3. Khởi động browser theo project được cấu hình.
+4. Tạo BrowserContext riêng cho test.
+5. Tạo Page, tương đương một tab trình duyệt.
+6. Chạy từng dòng trong callback của test.
+7. Thu kết quả assertion.
+8. Đánh dấu test Passed hoặc Failed.
+9. Ghi kết quả vào terminal và report.
+10. Đóng tài nguyên sau khi test kết thúc.</code></pre></div>
+<h3 id="3-2-passed-v-failed-ngh-a-l-g-9">3.2. Passed và Failed nghĩa là gì?</h3>
+<ul>
+<li>**Passed:** Tất cả thao tác chạy xong và tất cả assertion đều đúng.</li>
+<li>**Failed:** Có exception, thao tác hết timeout, locator không xác định đúng element hoặc assertion không đạt.</li>
+<li>**Skipped:** Test được đánh dấu không chạy.</li>
+<li>**Flaky:** Test fail ở lần đầu nhưng pass khi retry. Đây là tín hiệu test không ổn định, không nên coi là hoàn toàn tốt.</li>
+</ul>
+<p>---</p>
+<h1 id="ph-n-ii-k-ho-ch-14-ng-y-10">PHẦN II. KẾ HOẠCH 14 NGÀY</h1>
+</section>
+    <section class="lesson" data-day="1" id="lesson-1"><div class="lesson-top"><span class="lesson-badge">Ngày 1/14</span><label class="complete-label"><input class="complete-check" type="checkbox" data-progress="day-1"><span>Đã hoàn thành</span></label></div><h1 id="ng-y-1-c-i-m-i-tr-ng-v-hi-u-testcase-u-ti-n-11">Ngày 1: Cài môi trường và hiểu testcase đầu tiên</h1>
+<h2 id="4-1-m-c-ti-u-ng-y-1-12">4.1. Mục tiêu ngày 1</h2>
+<p>Cuối buổi, học viên phải:</p>
+<ul>
+<li>Kiểm tra được Node.js và npm.</li>
+<li>Tạo được project Playwright TypeScript.</li>
+<li>Chạy được test ở chế độ headless và headed.</li>
+<li>Đọc được từng dòng của một testcase ngắn.</li>
+<li>Hiểu test chạy cụ thể theo thứ tự nào.</li>
+<li>Biết xem lỗi assertion đơn giản.</li>
+</ul>
+<h2 id="4-2-ki-m-tra-m-i-tr-ng-13">4.2. Kiểm tra môi trường</h2>
+<p>Mở Terminal hoặc PowerShell rồi chạy:</p>
+<div class="code-shell"><div class="code-toolbar"><span>BASH</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-bash">node --version
+npm --version</code></pre></div>
+<p>Ý nghĩa:</p>
+<ul>
+<li>`node`: chương trình chạy JavaScript hoặc TypeScript đã được biên dịch trên máy.</li>
+<li>`--version`: yêu cầu chương trình in phiên bản hiện tại.</li>
+<li>`npm`: công cụ quản lý package của Node.js.</li>
+</ul>
+<p>Kết quả hợp lệ có dạng:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">v22.x.x
+10.x.x</code></pre></div>
+<p>Không cần giống chính xác phiên bản trên. Nếu terminal báo <code>command not found</code> hoặc <code>is not recognized</code>, máy chưa cài Node.js hoặc biến môi trường chưa đúng.</p>
+<h2 id="4-3-t-o-project-14">4.3. Tạo project</h2>
+<p>Chạy từng lệnh:</p>
+<div class="code-shell"><div class="code-toolbar"><span>BASH</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-bash">mkdir automation-foundation
+cd automation-foundation
+npm init playwright@latest</code></pre></div>
+<p>Giải thích:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">mkdir automation-foundation</code></pre></div>
+<ul>
+<li>`mkdir` là viết tắt của make directory.</li>
+<li>Lệnh tạo thư mục `automation-foundation`.</li>
+</ul>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">cd automation-foundation</code></pre></div>
+<ul>
+<li>`cd` là viết tắt của change directory.</li>
+<li>Terminal chuyển vị trí làm việc vào thư mục vừa tạo.</li>
+</ul>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">npm init playwright@latest</code></pre></div>
+<ul>
+<li>`npm` chạy package từ hệ sinh thái Node.js.</li>
+<li>`init` khởi tạo project.</li>
+<li>`playwright` là bộ khởi tạo Playwright.</li>
+<li>`@latest` yêu cầu dùng phiên bản mới nhất đang được npm phân phối tại thời điểm cài.</li>
+</ul>
+<p>Khi được hỏi, chọn:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">TypeScript
+tests
+GitHub Actions: No hoặc Yes đều được
+Install Playwright browsers: Yes</code></pre></div>
+<h2 id="4-4-nh-ng-file-quan-tr-ng-v-a-c-t-o-15">4.4. Những file quan trọng vừa được tạo</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">package.json</code></pre></div>
+<p>Chứa tên project, scripts và danh sách dependency. Có thể hiểu đây là bản khai báo project Node.js.</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">package-lock.json</code></pre></div>
+<p>Khóa phiên bản dependency thực tế đã được cài, giúp nhiều máy cài ra bộ dependency nhất quán hơn.</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">playwright.config.ts</code></pre></div>
+<p>Cấu hình Playwright như thư mục test, browser, timeout, reporter, screenshot và trace.</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">tests/example.spec.ts</code></pre></div>
+<p>File test mẫu. Tên <code>.spec.ts</code> thường được Playwright nhận diện là test file.</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">node_modules/</code></pre></div>
+<p>Nơi npm lưu các package đã cài. Không sửa code trực tiếp trong thư mục này.</p>
+<h2 id="4-5-ch-y-test-l-n-u-16">4.5. Chạy test lần đầu</h2>
+<div class="code-shell"><div class="code-toolbar"><span>BASH</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-bash">npx playwright test</code></pre></div>
+<p>Giải thích từng phần:</p>
+<ul>
+<li>`npx`: tìm và chạy executable từ dependency của project.</li>
+<li>`playwright`: Playwright command line interface.</li>
+<li>`test`: yêu cầu Playwright tìm và chạy test.</li>
+</ul>
+<p>Mặc định test thường chạy headless, nghĩa là browser vẫn chạy nhưng không hiện cửa sổ cho người dùng quan sát.</p>
+<p>Chạy và hiện browser:</p>
+<div class="code-shell"><div class="code-toolbar"><span>BASH</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-bash">npx playwright test --headed</code></pre></div>
+<ul>
+<li>`--headed` yêu cầu hiển thị cửa sổ browser.</li>
+<li>Test có thể chạy rất nhanh nên cửa sổ có thể mở rồi đóng ngay.</li>
+</ul>
+<p>Chạy duy nhất một file:</p>
+<div class="code-shell"><div class="code-toolbar"><span>BASH</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-bash">npx playwright test tests/first-test.spec.ts</code></pre></div>
+<p>Mở giao diện hỗ trợ quan sát test:</p>
+<div class="code-shell"><div class="code-toolbar"><span>BASH</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-bash">npx playwright test --ui</code></pre></div>
+<p>Mở HTML report:</p>
+<div class="code-shell"><div class="code-toolbar"><span>BASH</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-bash">npx playwright show-report</code></pre></div>
+<h2 id="4-6-vi-t-testcase-u-ti-n-17">4.6. Viết testcase đầu tiên</h2>
+<p>Tạo file <code>tests/first-test.spec.ts</code>:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">import { test, expect } from &#x27;@playwright/test&#x27;;
+
+test(&#x27;user can open Todo application&#x27;, async ({ page }) =&gt; {
+  await page.goto(&#x27;https://demo.playwright.dev/todomvc/&#x27;);
+
+  await expect(page).toHaveTitle(/TodoMVC/);
+  await expect(
+    page.getByPlaceholder(&#x27;What needs to be done?&#x27;)
+  ).toBeVisible();
+});</code></pre></div>
+<h2 id="4-7-gi-i-th-ch-t-ng-k-t-v-t-ng-d-ng-18">4.7. Giải thích từng ký tự và từng dòng</h2>
+<h3 id="d-ng-1-19">Dòng 1</h3>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">import { test, expect } from &#x27;@playwright/test&#x27;;</code></pre></div>
+<p>Giải thích từ trái sang phải:</p>
+<ul>
+<li>`import`: đưa thành phần được export từ package khác vào file hiện tại để sử dụng.</li>
+<li>`{ test, expect }`: lấy đúng hai thành phần có tên `test` và `expect`.</li>
+<li>`test`: hàm dùng để khai báo một testcase.</li>
+<li>`expect`: hàm dùng để khai báo kết quả mong đợi.</li>
+<li>`from`: cho biết hai thành phần trên được lấy từ đâu.</li>
+<li>`&#x27;@playwright/test&#x27;`: tên package Playwright Test.</li>
+<li>Dấu nháy đơn bao quanh chuỗi.</li>
+<li>Dấu `;`: kết thúc statement. TypeScript có thể tự suy ra trong nhiều trường hợp, nhưng khóa học dùng dấu `;` để code nhất quán.</li>
+</ul>
+<p>Nếu bỏ dòng import, TypeScript không biết <code>test</code> và <code>expect</code> là gì.</p>
+<h3 id="d-ng-3-20">Dòng 3</h3>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">test(&#x27;user can open Todo application&#x27;, async ({ page }) =&gt; {</code></pre></div>
+<p>Phân tích cấu trúc tổng thể:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">test(TEST_NAME, TEST_FUNCTION)</code></pre></div>
+<p>Trong đó:</p>
+<ul>
+<li>`test(`: bắt đầu gọi hàm `test`.</li>
+<li>`&#x27;user can open Todo application&#x27;`: tên testcase, dùng để hiển thị trên terminal và report.</li>
+<li>Dấu `,`: ngăn cách tham số thứ nhất và tham số thứ hai.</li>
+<li>`async`: khai báo function có thao tác bất đồng bộ và cho phép sử dụng `await` bên trong.</li>
+<li>`({ page })`: nhận fixture object rồi lấy thuộc tính `page` bằng destructuring.</li>
+<li>`page`: một tab browser do Playwright chuẩn bị cho testcase.</li>
+<li>`=&gt;`: cú pháp arrow function.</li>
+<li>`{`: bắt đầu phần thân function.</li>
+</ul>
+<p>Có thể đọc bằng tiếng Việt:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Khai báo một test tên &quot;user can open Todo application&quot;.
+Khi test chạy, Playwright cung cấp một page.
+Thực hiện các câu lệnh nằm trong cặp ngoặc nhọn.</code></pre></div>
+<h3 id="d-ng-4-21">Dòng 4</h3>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await page.goto(&#x27;https://demo.playwright.dev/todomvc/&#x27;);</code></pre></div>
+<ul>
+<li>`await`: chờ Promise hoàn thành trước khi chạy dòng tiếp theo.</li>
+<li>`page`: tab browser hiện tại.</li>
+<li>Dấu `.`: truy cập method hoặc property của object.</li>
+<li>`goto(...)`: yêu cầu page điều hướng đến URL.</li>
+<li>URL trong dấu nháy đơn là trang cần mở.</li>
+</ul>
+<p>Luồng thực tế:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Code gửi yêu cầu điều hướng
+→ Browser mở URL
+→ Playwright chờ điều kiện tải trang của goto
+→ Promise hoàn thành
+→ Test chuyển sang dòng assertion đầu tiên</code></pre></div>
+<p>Nếu bỏ <code>await</code>, code có thể chuyển sang assertion khi thao tác điều hướng chưa hoàn thành.</p>
+<h3 id="d-ng-6-22">Dòng 6</h3>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await expect(page).toHaveTitle(/TodoMVC/);</code></pre></div>
+<ul>
+<li>`expect(page)`: đối tượng cần kiểm tra là trang hiện tại.</li>
+<li>`.toHaveTitle(...)`: mong title của trang thỏa điều kiện.</li>
+<li>`/TodoMVC/`: regular expression, nghĩa là title cần chứa chuỗi `TodoMVC`.</li>
+<li>`await`: assertion web của Playwright có cơ chế retry nên phải chờ kết quả.</li>
+</ul>
+<p>Ví dụ title là:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">React • TodoMVC</code></pre></div>
+<p>thì <code>/TodoMVC/</code> vẫn match vì chuỗi có chứa <code>TodoMVC</code>.</p>
+<p>Nếu dùng:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await expect(page).toHaveTitle(&#x27;TodoMVC&#x27;);</code></pre></div>
+<p>thì Playwright mong title khớp chính xác với <code>TodoMVC</code>, nên có thể fail nếu title đầy đủ là <code>React • TodoMVC</code>.</p>
+<h3 id="d-ng-7-n-9-23">Dòng 7 đến 9</h3>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await expect(
+  page.getByPlaceholder(&#x27;What needs to be done?&#x27;)</code></code>
+  ).toBeVisible();</pre></div>
+<p>Có thể viết trên một dòng:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await expect(page.getByPlaceholder(&#x27;What needs to be done?&#x27;)).toBeVisible();</pre></div>
+<p>Tách thành nhiều dòng chỉ để dễ đọc.</p>
+<ul>
+<li>`page.getByPlaceholder(...)`: tìm element có thuộc tính placeholder tương ứng.</li>
+<li>Placeholder là chữ gợi ý nằm trong input khi chưa nhập dữ liệu.</li>
+<li>Kết quả của `getByPlaceholder` là một `Locator`, không phải text và cũng chưa phải thao tác click.</li>
+<li>`expect(locator)`: chọn locator đó làm đối tượng cần kiểm tra.</li>
+<li>`toBeVisible()`: mong element đang hiện và người dùng có thể nhìn thấy.</li>
+</ul>
+<p>Luồng retry:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Playwright tìm input
+→ Nếu chưa visible, chờ và tìm lại
+→ Nếu visible trước timeout, assertion pass
+→ Nếu vẫn không visible khi hết timeout, assertion fail</code></pre></div>
+<h3 id="d-ng-cu-i-24">Dòng cuối</h3>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">});</code></pre></div>
+<ul>
+<li>`}`: đóng thân arrow function.</li>
+<li>`)`: đóng lời gọi hàm `test`.</li>
+<li>`;`: kết thúc statement.</li>
+</ul>
+<h2 id="4-8-test-ch-y-c-th-t-u-n-cu-i-25">4.8. Test chạy cụ thể từ đầu đến cuối</h2>
+<p>Khi chạy:</p>
+<div class="code-shell"><div class="code-toolbar"><span>BASH</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-bash">npx playwright test tests/first-test.spec.ts --headed</code></pre></div>
+<p>thứ tự xảy ra là:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">1. CLI đọc playwright.config.ts.
+2. CLI tìm file tests/first-test.spec.ts.
+3. TypeScript được xử lý để có thể thực thi.
+4. Dòng import nạp test và expect.
+5. Hàm test đăng ký testcase với Playwright runner.
+6. Runner khởi tạo browser context độc lập.
+7. Runner tạo page.
+8. page.goto mở TodoMVC.
+9. Assertion title được kiểm tra.
+10. Locator tìm input theo placeholder.
+11. Assertion kiểm tra input visible.
+12. Không có dòng nào khác, callback kết thúc.
+13. Không có lỗi và assertion đều đúng, test được đánh dấu Passed.
+14. Playwright đóng page/context theo lifecycle của fixture.
+15. Kết quả được ghi ra terminal và report.</code></pre></div>
+<h2 id="4-9-b-i-t-p-ng-y-1-26">4.9. Bài tập ngày 1</h2>
+<h3 id="b-i-1-i-t-n-test-27">Bài 1: Đổi tên test</h3>
+<p>Đổi tên thành:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Todo application displays the new Todo input</code></pre></div>
+<p>Mục đích: hiểu tên test chỉ mô tả hành vi, không điều khiển browser.</p>
+<h3 id="b-i-2-t-o-l-i-title-28">Bài 2: Tạo lỗi title</h3>
+<p>Đổi:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await expect(page).toHaveTitle(/TodoMVC/);</code></pre></div>
+<p>thành:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await expect(page).toHaveTitle(/Google/);</code></pre></div>
+<p>Chạy lại và trả lời:</p>
+<p>1. Test fail ở dòng nào?</p>
+<p>2. Expected là gì?</p>
+<p>3. Received là gì?</p>
+<p>4. Đây là lỗi application hay lỗi expected trong test?</p>
+<p>Đáp án suy luận:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Trang mở đúng TodoMVC.
+Test lại yêu cầu title chứa Google.
+Expected được viết sai.
+Đây là lỗi test, chưa có bằng chứng application lỗi.</code></pre></div>
+<h3 id="b-i-3-t-o-l-i-locator-29">Bài 3: Tạo lỗi locator</h3>
+<p>Đổi placeholder thành:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">page.getByPlaceholder(&#x27;Enter your task&#x27;)</code></pre></div>
+<p>Quan sát timeout. Kết luận:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Locator không match input thật trên trang.
+Không sửa bằng delay vì chờ lâu hơn không làm placeholder sai trở thành đúng.</code></pre></div>
+<h2 id="4-10-definition-of-done-ng-y-1-30">4.10. Definition of Done ngày 1</h2>
+<ul>
+<li>[ ] Chạy được `node --version` và `npm --version`.</li>
+<li>[ ] Tạo được project.</li>
+<li>[ ] Chạy được test headless.</li>
+<li>[ ] Chạy được test headed.</li>
+<li>[ ] Biết `test`, `page`, `expect`, `await` có vai trò gì.</li>
+<li>[ ] Tạo và giải thích được một assertion fail.</li>
+<li>[ ] Không copy code mà không đọc từng dòng.</li>
+</ul>
+<p>---</p>
+</section><section class="lesson" data-day="2" id="lesson-2"><div class="lesson-top"><span class="lesson-badge">Ngày 2/14</span><label class="complete-label"><input class="complete-check" type="checkbox" data-progress="day-2"><span>Đã hoàn thành</span></label></div><h1 id="ng-y-2-typescript-t-i-thi-u-c-automation-test-31">Ngày 2: TypeScript tối thiểu để đọc automation test</h1>
+<h2 id="5-1-m-c-ti-u-32">5.1. Mục tiêu</h2>
+<p>Học viên đọc được biến, kiểu dữ liệu, array, object, function, class, import/export và async/await ở mức sử dụng trong test.</p>
+<h2 id="5-2-bi-n-v-ki-u-d-li-u-33">5.2. Biến và kiểu dữ liệu</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">const applicationName: string = &#x27;TodoMVC&#x27;;
+let todoCount: number = 0;
+const shouldComplete: boolean = true;</code></pre></div>
+<h3 id="d-ng-1-34">Dòng 1</h3>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">const applicationName: string = &#x27;TodoMVC&#x27;;</code></pre></div>
+<ul>
+<li>`const`: khai báo biến không được gán lại.</li>
+<li>`applicationName`: tên biến.</li>
+<li>`:`: bắt đầu khai báo kiểu.</li>
+<li>`string`: giá trị phải là chuỗi.</li>
+<li>`=`: gán giá trị.</li>
+<li>`&#x27;TodoMVC&#x27;`: giá trị chuỗi.</li>
+</ul>
+<p>Không hợp lệ:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">applicationName = &#x27;Other App&#x27;;</code></pre></div>
+<p>vì biến được khai báo bằng <code>const</code>.</p>
+<h3 id="d-ng-2-35">Dòng 2</h3>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">let todoCount: number = 0;</code></pre></div>
+<ul>
+<li>`let`: biến có thể được gán lại.</li>
+<li>`number`: kiểu số.</li>
+</ul>
+<p>Hợp lệ:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">todoCount = todoCount + 1;</code></pre></div>
+<h3 id="d-ng-3-36">Dòng 3</h3>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">const shouldComplete: boolean = true;</code></pre></div>
+<ul>
+<li>`boolean`: chỉ nhận `true` hoặc `false`.</li>
+</ul>
+<h2 id="5-3-array-37">5.3. Array</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">const todoNames: string[] = [
+  &#x27;Learn TypeScript&#x27;,
+  &#x27;Learn Playwright&#x27;
+];</code></pre></div>
+<ul>
+<li>`string[]`: array mà mỗi phần tử phải là string.</li>
+<li>`[` và `]`: bắt đầu và kết thúc array.</li>
+<li>Dấu phẩy ngăn cách các phần tử.</li>
+</ul>
+<p>Duyệt array:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">for (const todoName of todoNames) {
+  console.log(todoName);
+}</code></pre></div>
+<ul>
+<li>`for...of`: lấy lần lượt từng giá trị.</li>
+<li>Lần lặp đầu, `todoName` là `Learn TypeScript`.</li>
+<li>Lần lặp sau, `todoName` là `Learn Playwright`.</li>
+</ul>
+<h2 id="5-4-object-38">5.4. Object</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">const todoData = {
+  title: &#x27;Learn Playwright&#x27;,
+  completed: false
+};</code></pre></div>
+<p>Object có hai property:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">title     → Learn Playwright
+completed → false</code></pre></div>
+<p>Đọc property:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">console.log(todoData.title);
+console.log(todoData.completed);</code></pre></div>
+<h2 id="5-5-function-39">5.5. Function</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">function createTodoTitle(index: number): string {
+  return `Todo item ${index}`;
+}</code></pre></div>
+<ul>
+<li>`function`: khai báo function.</li>
+<li>`createTodoTitle`: tên function.</li>
+<li>`index: number`: function nhận một tham số số.</li>
+<li>`: string`: function phải trả về chuỗi.</li>
+<li>`return`: trả kết quả cho nơi gọi.</li>
+<li>Backtick cho phép chèn biến bằng `${...}`.</li>
+</ul>
+<p>Gọi function:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">const title = createTodoTitle(1);</code></pre></div>
+<p>Kết quả của <code>title</code> là:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Todo item 1</code></pre></div>
+<h2 id="5-6-async-function-v-promise-40">5.6. Async function và Promise</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">async function getStatus(): Promise&lt;string&gt; {
+  return &#x27;Created&#x27;;
+}
+
+async function run(): Promise&lt;void&gt; {
+  const status = await getStatus();
+  console.log(status);
+}</code></pre></div>
+<ul>
+<li>Function có `async` luôn trả về Promise.</li>
+<li>`Promise&lt;string&gt;` nghĩa là sau khi hoàn thành sẽ cho một string.</li>
+<li>`Promise&lt;void&gt;` nghĩa là function bất đồng bộ nhưng không trả dữ liệu nghiệp vụ.</li>
+<li>`await getStatus()` chờ Promise hoàn thành rồi gán kết quả vào `status`.</li>
+</ul>
+<p>Liên hệ Playwright:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await page.goto(url);
+await input.fill(value);
+await button.click();</code></pre></div>
+<p>Browser cần thời gian xử lý nên các method trên trả Promise.</p>
+<h2 id="5-7-b-i-t-p-ng-y-2-41">5.7. Bài tập ngày 2</h2>
+<p>Tạo file <code>practice/typescript-basic.ts</code>:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">const todoItems: string[] = [
+  &#x27;Read requirement&#x27;,
+  &#x27;Write test case&#x27;,
+  &#x27;Execute automation test&#x27;
+];
+
+function formatTodo(index: number, title: string): string {
+  return `Todo ${index}: ${title}`;
+}
+
+for (let index = 0; index &lt; todoItems.length; index++) {
+  console.log(formatTodo(index + 1, todoItems[index]));
+}</code></pre></div>
+<p>Kết quả mong đợi:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Todo 1: Read requirement
+Todo 2: Write test case
+Todo 3: Execute automation test</code></pre></div>
+<h3 id="c-u-h-i-b-t-bu-c-42">Câu hỏi bắt buộc</h3>
+<p>1. Vì sao <code>index</code> bắt đầu từ <code>0</code>?</p>
+<p>2. Vì sao khi hiển thị dùng <code>index + 1</code>?</p>
+<p>3. <code>todoItems.length</code> trả về gì?</p>
+<p>4. Nếu đổi <code>index &lt; todoItems.length</code> thành <code>index &lt;= todoItems.length</code>, điều gì có thể xảy ra?</p>
+<h3 id="b-i-debug-43">Bài debug</h3>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">const maximumTodo: number = &#x27;five&#x27;;</code></pre></div>
+<p>Đọc lỗi TypeScript và sửa thành:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">const maximumTodo: number = 5;</code></pre></div>
+<p>---</p>
+</section><section class="lesson" data-day="3" id="lesson-3"><div class="lesson-top"><span class="lesson-badge">Ngày 3/14</span><label class="complete-label"><input class="complete-check" type="checkbox" data-progress="day-3"><span>Đã hoàn thành</span></label></div><h1 id="ng-y-3-vi-t-test-t-o-todo-u-ti-n-44">Ngày 3: Viết test tạo Todo đầu tiên</h1>
+<h2 id="6-1-test-case-nghi-p-v-45">6.1. Test case nghiệp vụ</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Tên: User can create one Todo.
+Precondition: User mở TodoMVC.
+Test data: Learn Playwright.
+Action: Nhập title và nhấn Enter.
+Expected: Todo xuất hiện trên danh sách.</code></pre></div>
+<h2 id="6-2-code-46">6.2. Code</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">import { test, expect } from &#x27;@playwright/test&#x27;;
+
+test(&#x27;user can create one Todo&#x27;, async ({ page }) =&gt; {
+  await page.goto(&#x27;https://demo.playwright.dev/todomvc/&#x27;);
+
+  const todoInput = page.getByPlaceholder(&#x27;What needs to be done?&#x27;);
+
+  await todoInput.fill(&#x27;Learn Playwright&#x27;);
+  await todoInput.press(&#x27;Enter&#x27;);
+
+  await expect(page.getByText(&#x27;Learn Playwright&#x27;)).toBeVisible();
+});</code></pre></div>
+<h2 id="6-3-gi-i-th-ch-t-ng-d-ng-m-i-47">6.3. Giải thích từng dòng mới</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">const todoInput = page.getByPlaceholder(&#x27;What needs to be done?&#x27;);</code></pre></div>
+<ul>
+<li>Tạo biến `todoInput` để không lặp locator.</li>
+<li>Biến giữ một Locator.</li>
+<li>Dòng này chưa nhập dữ liệu và chưa click.</li>
+<li>Locator mô tả cách Playwright sẽ tìm element khi được sử dụng.</li>
+</ul>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await todoInput.fill(&#x27;Learn Playwright&#x27;);</code></pre></div>
+<ul>
+<li>`fill` điền giá trị vào input.</li>
+<li>Nếu input đang có dữ liệu, `fill` thay thế bằng giá trị mới.</li>
+<li>`await` chờ action hoàn thành.</li>
+</ul>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await todoInput.press(&#x27;Enter&#x27;);</code></pre></div>
+<ul>
+<li>`press` mô phỏng phím bàn phím trên element.</li>
+<li>`&#x27;Enter&#x27;` là tên phím.</li>
+<li>TodoMVC tạo item khi người dùng nhấn Enter.</li>
+</ul>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await expect(page.getByText(&#x27;Learn Playwright&#x27;)).toBeVisible();</code></pre></div>
+<ul>
+<li>Tìm element có text `Learn Playwright`.</li>
+<li>Kiểm tra element đó hiển thị.</li>
+<li>Đây là bằng chứng UI rằng việc tạo Todo có kết quả.</li>
+</ul>
+<h2 id="6-4-test-ch-y-ra-sao-48">6.4. Test chạy ra sao</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">1. Mở TodoMVC.
+2. Tạo locator cho input.
+3. Tìm input và điền Learn Playwright.
+4. Tìm lại input tại thời điểm press và nhấn Enter.
+5. Application xử lý sự kiện và thêm Todo vào DOM.
+6. Assertion liên tục tìm text Learn Playwright.
+7. Text xuất hiện trước timeout, assertion pass.
+8. Test không có lỗi, kết quả Passed.</code></pre></div>
+<h2 id="6-5-b-i-t-p-49">6.5. Bài tập</h2>
+<p>Tạo hai Todo bằng array và loop:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">const todoNames = [&#x27;Learn TypeScript&#x27;, &#x27;Learn Playwright&#x27;];
+
+for (const todoName of todoNames) {
+  await todoInput.fill(todoName);
+  await todoInput.press(&#x27;Enter&#x27;);
+}
+
+await expect(page.locator(&#x27;.todo-list li&#x27;)).toHaveCount(2);</code></pre></div>
+<h3 id="suy-lu-n-50">Suy luận</h3>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Có hai dữ liệu cùng thực hiện một quy trình
+→ Không copy hai đoạn giống nhau
+→ Đặt dữ liệu vào array
+→ Dùng loop
+→ Sau action, kiểm tra số lượng item</code></pre></div>
+<h3 id="b-i-debug-51">Bài debug</h3>
+<p>Bỏ dòng <code>press(&#x27;Enter&#x27;)</code>. Giải thích vì sao test fail:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">fill chỉ đưa text vào ô nhập.
+Application chưa nhận sự kiện tạo Todo.
+DOM chưa có Todo mới.
+Assertion không tìm thấy kết quả.</code></pre></div>
+<p>---</p>
+</section><section class="lesson" data-day="4" id="lesson-4"><div class="lesson-top"><span class="lesson-badge">Ngày 4/14</span><label class="complete-label"><input class="complete-check" type="checkbox" data-progress="day-4"><span>Đã hoàn thành</span></label></div><h1 id="ng-y-4-locator-c-b-n-v-c-ch-suy-lu-n-52">Ngày 4: Locator cơ bản và cách suy luận</h1>
+<h2 id="7-1-locator-l-g-53">7.1. Locator là gì?</h2>
+<p>Locator là mô tả giúp Playwright tìm element tại thời điểm thực hiện action hoặc assertion.</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">const saveButton = page.getByRole(&#x27;button&#x27;, { name: &#x27;Save&#x27; });</code></pre></div>
+<p>Dòng này chưa click. Khi chạy:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await saveButton.click();</code></pre></div>
+<p>Playwright mới dùng mô tả locator để tìm button phù hợp rồi thực hiện click.</p>
+<h2 id="7-2-th-t-u-ti-n-54">7.2. Thứ tự ưu tiên</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">1. getByRole: element có vai trò và accessible name rõ.
+2. getByLabel: input được gắn với label.
+3. getByPlaceholder: input có placeholder rõ.
+4. getByText: nội dung mà người dùng nhìn thấy.
+5. getByTestId: contract dành riêng cho test.
+6. locator: CSS hoặc XPath khi thật sự cần.</code></pre></div>
+<h2 id="7-3-c-ch-ch-n-locator-b-ng-c-u-h-i-55">7.3. Cách chọn locator bằng câu hỏi</h2></code></code>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Element là button, link, checkbox hay heading?
+→ Thử getByRole.
+
+Element là input có label?
+→ Thử getByLabel.
+
+Input chỉ có placeholder?
+→ Thử getByPlaceholder.
+
+Cần kiểm tra một nội dung hiển thị?
+→ Thử getByText.
+
+Dev cung cấp data-testid ổn định?
+→ Dùng getByTestId.</pre></div>
+<h2 id="7-4-b-i-th-c-h-nh-complete-todo-56">7.4. Bài thực hành complete Todo</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">import { test, expect } from &#x27;@playwright/test&#x27;;
+
+test(&#x27;user can complete a Todo&#x27;, async ({ page }) =&gt; {
+  await page.goto(&#x27;https://demo.playwright.dev/todomvc/&#x27;);
+
+  const todoInput = page.getByPlaceholder(&#x27;What needs to be done?&#x27;);
+  await todoInput.fill(&#x27;Complete locator exercise&#x27;);
+  await todoInput.press(&#x27;Enter&#x27;);
+
+  const todoItem = page.getByText(&#x27;Complete locator exercise&#x27;);
+  await expect(todoItem).toBeVisible();
+
+  const checkbox = page.getByRole(&#x27;checkbox&#x27;, { name: &#x27;Toggle Todo&#x27; });
+  await checkbox.check();
+
+  await expect(checkbox).toBeChecked();
+});</pre></div>
+<p>&gt; Nếu accessible name thực tế khác, dùng Playwright UI Mode hoặc locator picker để kiểm tra DOM và accessible information. Không đoán rồi tăng timeout.</p>
+<h2 id="7-5-b-n-c-u-h-i-review-locator-57">7.5. Bốn câu hỏi review locator</h2>
+<p>1. Locator đang dựa vào thông tin nào?</p>
+<p>2. Nó có match đúng một element không?</p>
+<p>3. Thông tin đó có ổn định không?</p>
+<p>4. Nếu test fail, có bằng chứng locator sai hay application chưa render?</p>
+<p>---</p>
+</section><section class="lesson" data-day="5" id="lesson-5"><div class="lesson-top"><span class="lesson-badge">Ngày 5/14</span><label class="complete-label"><input class="complete-check" type="checkbox" data-progress="day-5"><span>Đã hoàn thành</span></label></div><h1 id="ng-y-5-actions-assertions-v-auto-wait-58">Ngày 5: Actions, assertions và auto-wait</h1>
+<h2 id="8-1-actions-b-t-bu-c-59">8.1. Actions bắt buộc</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await page.goto(&#x27;/path&#x27;);
+await input.fill(&#x27;value&#x27;);
+await button.click();
+await input.press(&#x27;Enter&#x27;);
+await checkbox.check();
+await checkbox.uncheck();</code></pre></div>
+<h2 id="8-2-assertions-b-t-bu-c-60">8.2. Assertions bắt buộc</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await expect(locator).toBeVisible();
+await expect(locator).toHaveText(&#x27;Expected&#x27;);
+await expect(locator).toContainText(&#x27;Part&#x27;);
+await expect(locator).toHaveCount(3);
+await expect(locator).toBeChecked();
+await expect(page).toHaveURL(/dashboard/);</code></pre></div>
+<h2 id="8-3-auto-wait-d-hi-u-61">8.3. Auto-wait dễ hiểu</h2>
+<p>Khi gọi <code>click</code>, Playwright thực hiện các actionability checks phù hợp, ví dụ element phải tồn tại, hiển thị và có khả năng nhận tương tác. Khi dùng web assertion, Playwright lặp lại việc kiểm tra cho tới khi pass hoặc hết timeout.</p>
+<p>Không mặc định viết:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await page.waitForTimeout(5000);</code></pre></div>
+<p>Vì:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">UI sẵn sàng sau 200 ms → vẫn phí gần 5 giây.
+UI cần 6 giây → test vẫn fail.
+Locator sai → chờ bao lâu vẫn sai.</code></pre></div>
+<h2 id="8-4-b-i-t-p-t-ng-h-p-62">8.4. Bài tập tổng hợp</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">1. Tạo ba Todo.
+2. Kiểm tra có ba item.
+3. Complete item đầu tiên.
+4. Kiểm tra checkbox item đầu tiên được checked.
+5. Chọn Active.
+6. Kiểm tra hai item hiển thị.
+7. Chọn Completed.
+8. Kiểm tra một item hiển thị.</code></pre></div>
+<p>Công thức chọn assertion:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Action
+→ Kết quả nghiệp vụ
+→ Bằng chứng trên UI
+→ Matcher phù hợp</code></pre></div>
+<p>---</p>
+</section><section class="lesson" data-day="6" id="lesson-6"><div class="lesson-top"><span class="lesson-badge">Ngày 6/14</span><label class="complete-label"><input class="complete-check" type="checkbox" data-progress="day-6"><span>Đã hoàn thành</span></label></div><h1 id="ng-y-6-positive-negative-v-test-isolation-63">Ngày 6: Positive, negative và test isolation</h1>
+<h2 id="9-1-ba-b-i-b-t-bu-c-64">9.1. Ba bài bắt buộc</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">TC01: Tạo Todo hợp lệ.
+TC02: Không tạo Todo khi input rỗng.
+TC03: Không tạo Todo khi input chỉ có khoảng trắng, nếu behavior thực tế hỗ trợ rule này.</code></pre></div>
+<p>&gt; Học viên phải chạy để xác nhận behavior thực tế. Không tự áp expected nếu application demo xử lý khác.</p>
+<h2 id="9-2-isolation-65">9.2. Isolation</h2>
+<p>Mỗi test tự chuẩn bị data. Không thiết kế Test 2 phụ thuộc Todo do Test 1 tạo.</p>
+<p>Tự kiểm tra bằng hai lệnh:</p>
+<div class="code-shell"><div class="code-toolbar"><span>BASH</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-bash">npx playwright test tests/todo-negative.spec.ts
+npx playwright test tests/todo-negative.spec.ts --workers=1</code></pre></div>
+<p>Sau đó chạy riêng từng test bằng <code>-g</code>:</p>
+<div class="code-shell"><div class="code-toolbar"><span>BASH</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-bash">npx playwright test -g &quot;empty input&quot;</code></pre></div>
+<p>Nếu test chỉ pass khi chạy cả suite, test đang có nguy cơ phụ thuộc trạng thái khác.</p>
+<p>---</p>
+</section><section class="lesson" data-day="7" id="lesson-7"><div class="lesson-top"><span class="lesson-badge">Ngày 7/14</span><label class="complete-label"><input class="complete-check" type="checkbox" data-progress="day-7"><span>Đã hoàn thành</span></label></div><h1 id="ng-y-7-debugging-checkpoint-66">Ngày 7: Debugging checkpoint</h1>
+<h2 id="10-1-quy-tr-nh-debug-duy-nh-t-67">10.1. Quy trình debug duy nhất</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">1. Đọc tên testcase fail.
+2. Xác định dòng fail đầu tiên.
+3. Đọc error message đầy đủ.
+4. So sánh Expected và Actual.
+5. Xác định locator match 0, 1 hay nhiều element.
+6. Kiểm tra URL và state hiện tại.
+7. Chạy headed, UI hoặc debug mode.
+8. Dùng screenshot, report hoặc trace làm bằng chứng.
+9. Phân loại: test code, test data, environment hay application.
+10. Chỉ sửa đúng nguyên nhân đã xác định.</code></pre></div>
+<h2 id="10-2-c-c-l-nh-68">10.2. Các lệnh</h2>
+<div class="code-shell"><div class="code-toolbar"><span>BASH</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-bash">npx playwright test tests/todo-basic.spec.ts --headed
+npx playwright test tests/todo-basic.spec.ts --debug
+npx playwright test --ui
+npx playwright test --trace on
+npx playwright show-report</code></pre></div>
+<h2 id="10-3-b-i-t-p-t-o-l-i-69">10.3. Bài tập tạo lỗi</h2>
+<ul>
+<li>URL sai.</li>
+<li>Placeholder sai.</li>
+<li>Expected text sai.</li>
+<li>Locator match nhiều element.</li>
+<li>Quên `await`.</li>
+</ul>
+<p>Mỗi lỗi ghi:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Observed:
+Expected:
+Actual:
+Failure line:
+Evidence:
+Root cause:
+Fix:
+Result after fix:</code></pre></div>
+<p>---</p>
+</section><section class="lesson" data-day="8" id="lesson-8"><div class="lesson-top"><span class="lesson-badge">Ngày 8/14</span><label class="complete-label"><input class="complete-check" type="checkbox" data-progress="day-8"><span>Đã hoàn thành</span></label></div><h1 id="ng-y-8-page-object-model-c-b-n-70">Ngày 8: Page Object Model cơ bản</h1>
+<h2 id="11-1-v-n-71">11.1. Vấn đề</h2>
+<p>Nếu locator xuất hiện ở mười test, thay đổi UI có thể buộc sửa mười nơi. Page Object gom locator và thao tác UI dùng chung.</p>
+<h2 id="11-2-file-pages-todopage-ts-72">11.2. File `pages/TodoPage.ts`</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">import { expect, type Locator, type Page } from &#x27;@playwright/test&#x27;;
+
+export class TodoPage {
+  readonly page: Page;
+  readonly todoInput: Locator;
+  readonly todoItems: Locator;
+
+  constructor(page: Page) {
+    this.page = page;
+    this.todoInput = page.getByPlaceholder(&#x27;What needs to be done?&#x27;);
+    this.todoItems = page.locator(&#x27;.todo-list li&#x27;);
+  }
+
+  async open(): Promise&lt;void&gt; {
+    await this.page.goto(&#x27;https://demo.playwright.dev/todomvc/&#x27;);
+  }
+
+  async addTodo(title: string): Promise&lt;void&gt; {
+    await this.todoInput.fill(title);
+    await this.todoInput.press(&#x27;Enter&#x27;);
+  }
+
+  async verifyTodoVisible(title: string): Promise&lt;void&gt; {
+    await expect(this.page.getByText(title)).toBeVisible();
+  }
+
+  async verifyTodoCount(expectedCount: number): Promise&lt;void&gt; {
+    await expect(this.todoItems).toHaveCount(expectedCount);
+  }
+}</code></pre></div>
+<h2 id="11-3-gi-i-th-ch-c-c-ph-n-quan-tr-ng-73">11.3. Giải thích các phần quan trọng</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">export class TodoPage</code></pre></div>
+<ul>
+<li>`export`: cho phép file khác import class.</li>
+<li>`class`: khuôn mẫu chứa dữ liệu và hành vi liên quan đến Todo page.</li>
+</ul>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">constructor(page: Page)</code></pre></div>
+<p>Constructor chạy khi tạo <code>new TodoPage(page)</code>. Page từ test fixture được truyền vào Page Object.</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">readonly todoInput: Locator;</code></pre></div>
+<p>Property chứa Locator và không bị gán lại sau khi khởi tạo.</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">async addTodo(title: string): Promise&lt;void&gt;</code></pre></div>
+<p>Method nhận test data <code>title</code>, thao tác lên UI và không trả dữ liệu.</p>
+<h2 id="11-4-test-s-d-ng-page-object-74">11.4. Test sử dụng Page Object</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">import { test } from &#x27;@playwright/test&#x27;;
+import { TodoPage } from &#x27;../pages/TodoPage&#x27;;
+
+test(&#x27;user can add Todo using Page Object&#x27;, async ({ page }) =&gt; {
+  const todoPage = new TodoPage(page);
+
+  await todoPage.open();
+  await todoPage.addTodo(&#x27;Learn Page Object Model&#x27;);
+  await todoPage.verifyTodoVisible(&#x27;Learn Page Object Model&#x27;);
+  await todoPage.verifyTodoCount(1);
+});</code></pre></div>
+<p>Bài tập: refactor test ngày 3 đến ngày 6 để tái sử dụng <code>TodoPage</code>.</p>
+<p>---</p>
+</section><section class="lesson" data-day="9" id="lesson-9"><div class="lesson-top"><span class="lesson-badge">Ngày 9/14</span><label class="complete-label"><input class="complete-check" type="checkbox" data-progress="day-9"><span>Đã hoàn thành</span></label></div><h1 id="ng-y-9-test-data-v-config-75">Ngày 9: Test data và config</h1>
+<h2 id="12-1-test-data-76">12.1. Test data</h2>
+<p>Tạo <code>test-data/todo-data.ts</code>:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">export const todoData = {
+  firstTitle: &#x27;Complete Playwright foundation&#x27;,
+  secondTitle: &#x27;Write automation test&#x27;,
+  whitespaceTitle: &#x27;   &#x27;
+};</code></pre></div>
+<h2 id="12-2-base-url-77">12.2. Base URL</h2>
+<p>Trong <code>playwright.config.ts</code>:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">import { defineConfig, devices } from &#x27;@playwright/test&#x27;;
+
+export default defineConfig({
+  testDir: &#x27;./tests&#x27;,
+  use: {
+    baseURL: &#x27;https://demo.playwright.dev&#x27;,
+    trace: &#x27;retain-on-failure&#x27;,
+    screenshot: &#x27;only-on-failure&#x27;
+  },
+  projects: [
+    {
+      name: &#x27;chromium&#x27;,
+      use: { ...devices[&#x27;Desktop Chrome&#x27;] }
+    }
+  ]
+});</code></pre></div>
+<p>Page Object có thể dùng:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">await this.page.goto(&#x27;/todomvc/&#x27;);</code></pre></div>
+<p>Phân loại:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">URL môi trường → config
+Input của test → test-data hoặc test file
+Locator và UI action → Page Object
+Scenario và expected behavior → spec file</code></pre></div>
+<p>---</p>
+</section><section class="lesson" data-day="10" id="lesson-10"><div class="lesson-top"><span class="lesson-badge">Ngày 10/14</span><label class="complete-label"><input class="complete-check" type="checkbox" data-progress="day-10"><span>Đã hoàn thành</span></label></div><h1 id="ng-y-10-gherkin-v-cucumber-c-b-n-78">Ngày 10: Gherkin và Cucumber cơ bản</h1>
+<h2 id="13-1-feature-file-79">13.1. Feature file</h2>
+<p><code>features/todo.feature</code>:</p>
+<div class="code-shell"><div class="code-toolbar"><span>GHERKIN</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-gherkin">Feature: Todo management
+
+  Scenario: Add a new Todo item
+    Given the user opens the Todo application
+    When the user adds a Todo named &quot;Learn Cucumber&quot;
+    Then the Todo &quot;Learn Cucumber&quot; should be displayed</code></pre></div>
+<p>Giải thích:</p>
+<ul>
+<li>`Feature`: nhóm chức năng hoặc capability.</li>
+<li>`Scenario`: một behavior cụ thể.</li>
+<li>`Given`: trạng thái ban đầu.</li>
+<li>`When`: hành động chính.</li>
+<li>`Then`: kết quả có thể kiểm chứng.</li>
+</ul>
+<p>Không đặt selector, XPath hoặc câu lệnh click trong feature file. Feature mô tả behavior, không mô tả implementation detail.</p>
+<h2 id="13-2-b-i-t-p-80">13.2. Bài tập</h2>
+<p>Viết Gherkin cho:</p>
+<ul>
+<li>Tạo Todo.</li>
+<li>Complete Todo.</li>
+<li>Filter Completed.</li>
+</ul>
+<p>Mỗi scenario phải trả lời được:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Given đang chuẩn bị trạng thái gì?
+When user làm gì?
+Then bằng chứng nào chứng minh thành công?</code></pre></div>
+<p>---</p>
+</section><section class="lesson" data-day="11" id="lesson-11"><div class="lesson-top"><span class="lesson-badge">Ngày 11/14</span><label class="complete-label"><input class="complete-check" type="checkbox" data-progress="day-11"><span>Đã hoàn thành</span></label></div><h1 id="ng-y-11-mapping-gherkin-sang-step-definition-81">Ngày 11: Mapping Gherkin sang step definition</h1>
+<p>Ví dụ định hướng:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">Given(&#x27;the user opens the Todo application&#x27;, async function () {
+  await this.todoPage.open();
+});
+
+When(
+  &#x27;the user adds a Todo named {string}&#x27;,
+  async function (title: string) {
+    await this.todoPage.addTodo(title);
+  }
+);
+
+Then(
+  &#x27;the Todo {string} should be displayed&#x27;,
+  async function (title: string) {
+    await this.todoPage.verifyTodoVisible(title);
+  }
+);</code></pre></div>
+<p>&gt; Việc bootstrap Cucumber phụ thuộc cấu trúc starter project của đơn vị đào tạo. Học viên chỉ cần hoàn thành một flow xuyên suốt và không tự thiết kế custom World, hook hoặc dependency injection nâng cao trong giai đoạn này.</p>
+<p>Mapping:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Given mở ứng dụng → TodoPage.open()
+When thêm Todo → TodoPage.addTodo(title)
+Then kiểm tra hiển thị → TodoPage.verifyTodoVisible(title)</code></pre></div>
+<p>---</p>
+</section><section class="lesson" data-day="12" id="lesson-12"><div class="lesson-top"><span class="lesson-badge">Ngày 12/14</span><label class="complete-label"><input class="complete-check" type="checkbox" data-progress="day-12"><span>Đã hoàn thành</span></label></div><h1 id="ng-y-12-mini-project-82">Ngày 12: Mini project</h1>
+<h2 id="15-1-test-case-b-t-bu-c-83">15.1. Test case bắt buộc</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">TC01: Tạo một Todo thành công.
+TC02: Tạo nhiều Todo thành công.
+TC03: Complete một Todo.
+TC04: Filter Active và Completed.
+TC05: Không tạo Todo khi input rỗng.</code></pre></div>
+<h2 id="15-2-template-ph-n-t-ch-tr-c-khi-code-84">15.2. Template phân tích trước khi code</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">/*
+Test name:
+
+Precondition:
+
+Test data:
+
+Actions:
+1.
+2.
+
+Expected results:
+1.
+2.
+</code></code>
