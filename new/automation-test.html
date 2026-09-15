@@ -9,9 +9,17 @@
 :root{--bg:#f4f7fb;--panel:#fff;--panel2:#f8fafc;--text:#172033;--muted:#637083;--brand:#315ae8;--brand2:#6c4df6;--line:#dce3ee;--code:#101827;--success:#087f5b;--warn:#b66800;--shadow:0 10px 35px rgba(31,48,86,.10);--radius:18px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
 body.dark{--bg:#0b1020;--panel:#121a2b;--panel2:#172136;--text:#e9eef8;--muted:#a9b5ca;--line:#28354b;--code:#080d17;--shadow:0 12px 38px rgba(0,0,0,.3)}
-button,input{font:inherit}button{cursor:pointer}.top-nav{position:fixed;top:16px;right:20px;z-index:20;display:flex;gap:8px;padding:6px;background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:8px;backdrop-filter:blur(14px);box-shadow:0 10px 25px rgba(31,48,86,.08)}body.dark .top-nav{background:rgba(18,26,43,.88)}.top-nav a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:750;padding:7px 10px;border:1px solid transparent;border-radius:6px}.top-nav a:hover,.top-nav a.active{color:var(--brand);background:var(--panel2);border-color:var(--line)}.app{display:grid;grid-template-columns:320px minmax(0,1fr);min-height:100vh}aside{position:sticky;top:0;height:100vh;overflow:auto;background:var(--panel);border-right:1px solid var(--line);padding:24px 18px;z-index:5}.brand{display:flex;gap:12px;align-items:center;margin-bottom:20px}.logo{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:white;font-weight:900}.brand h1{font-size:16px;line-height:1.25;margin:0}.brand p{font-size:12px;margin:3px 0 0;color:var(--muted)}.progress-card{padding:14px;border:1px solid var(--line);background:var(--panel2);border-radius:14px;margin-bottom:16px}.progress-row{display:flex;justify-content:space-between;font-size:13px;font-weight:700}.progress-track{height:8px;background:var(--line);border-radius:999px;margin-top:9px;overflow:hidden}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--brand),#38bdf8);transition:.25s}.search{width:100%;padding:11px 13px;border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:12px;margin-bottom:12px}.nav-list{display:grid;gap:6px}.nav-item{width:100%;display:grid;grid-template-columns:34px 1fr;text-align:left;align-items:center;gap:8px;padding:10px;border:0;border-radius:12px;background:transparent;color:var(--text)}.nav-item:hover,.nav-item.active{background:color-mix(in srgb,var(--brand) 11%,var(--panel));color:var(--brand)}.nav-item span{font-size:12px;color:var(--muted)}.nav-item b{font-size:13px;line-height:1.25}.aside-actions{display:flex;gap:8px;margin-top:16px}.icon-btn{flex:1;padding:9px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--text)}main{min-width:0}.hero{padding:64px clamp(24px,6vw,86px);background:linear-gradient(135deg,#1938a5,#6c4df6 65%,#11a8c7);color:white}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;opacity:.85}.hero h1{font-size:clamp(32px,5vw,64px);line-height:1.03;max-width:900px;margin:14px 0}.hero p{max-width:760px;font-size:18px;opacity:.9}.hero-stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.stat{padding:12px 16px;background:#ffffff20;border:1px solid #ffffff36;border-radius:14px;backdrop-filter:blur(8px)}.stat strong{display:block;font-size:18px}.content{max-width:1040px;margin:auto;padding:38px 30px 80px}.intro,.lesson{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(22px,4vw,48px);box-shadow:var(--shadow);margin-bottom:26px}.lesson{display:none}.lesson.active{display:block;animation:fade .25s ease}@keyframes fade{from{opacity:.4;transform:translateY(5px)}}.lesson-top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:18px;border-bottom:1px solid var(--line)}.lesson-badge{padding:6px 11px;border-radius:999px;background:#315ae818;color:var(--brand);font-size:13px;font-weight:800}.complete-label{display:flex;align-items:center;gap:8px;color:var(--success);font-weight:750;font-size:14px}.complete-check{width:18px;height:18px;accent-color:var(--success)}h1,h2,h3{line-height:1.25;scroll-margin-top:20px}.lesson h1{font-size:32px;margin-top:26px}h2{font-size:25px;margin-top:36px}h3{font-size:19px;margin-top:28px}p,li{color:var(--text)}blockquote{margin:22px 0;padding:14px 18px;border-left:4px solid var(--warn);background:#ffb02015;border-radius:0 12px 12px 0}code{font-family:"Cascadia Code",Consolas,monospace;font-size:.92em}:not(pre)>code{background:var(--panel2);border:1px solid var(--line);padding:2px 6px;border-radius:6px;color:#c026d3}.code-shell{margin:18px 0;border-radius:14px;overflow:hidden;background:var(--code);box-shadow:0 8px 20px #0002}.code-toolbar{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;background:#1c2739;color:#b8c5d9;font-size:11px;font-weight:800;letter-spacing:.08em}.copy-btn{border:1px solid #40506a;background:#27344a;color:white;border-radius:7px;padding:4px 9px;font-size:12px}pre{margin:0;padding:18px;overflow:auto;color:#d7e2f2;line-height:1.55;tab-size:2}pre code{font-size:13px}a{color:var(--brand)}hr{border:0;border-top:1px solid var(--line);margin:35px 0}ul,ol{padding-left:25px}.lesson-nav{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}.lesson-nav button{padding:11px 15px;border:1px solid var(--line);border-radius:11px;background:var(--panel2);color:var(--text);font-weight:750}.empty{display:none;padding:16px;text-align:center;color:var(--muted)}mark{background:#fde68a;color:#1f2937;border-radius:3px;padding:0 2px}.mobile-toggle{display:none;position:fixed;right:16px;bottom:16px;z-index:10;border:0;width:48px;height:48px;border-radius:50%;background:var(--brand);color:white;box-shadow:var(--shadow)}
-@media(max-width:900px){.top-nav{left:16px;right:16px;justify-content:center;flex-wrap:wrap}.app{grid-template-columns:1fr}aside{position:fixed;left:-330px;width:310px;transition:.25s;box-shadow:var(--shadow)}aside.open{left:0}.mobile-toggle{display:block}.hero{padding:88px 24px 45px}.content{padding:24px 14px 70px}.intro,.lesson{padding:22px}.lesson h1{font-size:26px}}
-@media print{.top-nav,aside,.mobile-toggle,.lesson-nav,.copy-btn,.complete-label{display:none!important}.app{display:block}.hero{background:white;color:black;padding:20px}.lesson{display:block!important;box-shadow:none;break-inside:avoid;border:0}.content{max-width:none;padding:0}}
+button,input{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:320px minmax(0,1fr);min-height:100vh}aside{position:sticky;top:0;height:100vh;overflow:auto;background:var(--panel);border-right:1px solid var(--line);padding:24px 18px;z-index:5}.brand{display:flex;gap:12px;align-items:center;margin-bottom:20px}.logo{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:white;font-weight:900}.brand h1{font-size:16px;line-height:1.25;margin:0}.brand p{font-size:12px;margin:3px 0 0;color:var(--muted)}.progress-card{padding:14px;border:1px solid var(--line);background:var(--panel2);border-radius:14px;margin-bottom:16px}.progress-row{display:flex;justify-content:space-between;font-size:13px;font-weight:700}.progress-track{height:8px;background:var(--line);border-radius:999px;margin-top:9px;overflow:hidden}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--brand),#38bdf8);transition:.25s}.search{width:100%;padding:11px 13px;border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:12px;margin-bottom:12px}.nav-list{display:grid;gap:6px}.nav-item{width:100%;display:grid;grid-template-columns:34px 1fr;text-align:left;align-items:center;gap:8px;padding:10px;border:0;border-radius:12px;background:transparent;color:var(--text)}.nav-item:hover,.nav-item.active{background:color-mix(in srgb,var(--brand) 11%,var(--panel));color:var(--brand)}.nav-item span{font-size:12px;color:var(--muted)}.nav-item b{font-size:13px;line-height:1.25}.aside-actions{display:flex;gap:8px;margin-top:16px}.icon-btn{flex:1;padding:9px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);color:var(--text)}main{min-width:0}.hero{padding:64px clamp(24px,6vw,86px);background:linear-gradient(135deg,#1938a5,#6c4df6 65%,#11a8c7);color:white}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;opacity:.85}.hero h1{font-size:clamp(32px,5vw,64px);line-height:1.03;max-width:900px;margin:14px 0}.hero p{max-width:760px;font-size:18px;opacity:.9}.hero-stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.stat{padding:12px 16px;background:#ffffff20;border:1px solid #ffffff36;border-radius:14px;backdrop-filter:blur(8px)}.stat strong{display:block;font-size:18px}.content{max-width:1040px;margin:auto;padding:38px 30px 80px}.intro,.lesson{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(22px,4vw,48px);box-shadow:var(--shadow);margin-bottom:26px}.lesson{display:none}.lesson.active{display:block;animation:fade .25s ease}@keyframes fade{from{opacity:.4;transform:translateY(5px)}}.lesson-top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:18px;border-bottom:1px solid var(--line)}.lesson-badge{padding:6px 11px;border-radius:999px;background:#315ae818;color:var(--brand);font-size:13px;font-weight:800}.complete-label{display:flex;align-items:center;gap:8px;color:var(--success);font-weight:750;font-size:14px}.complete-check{width:18px;height:18px;accent-color:var(--success)}h1,h2,h3{line-height:1.25;scroll-margin-top:20px}.lesson h1{font-size:32px;margin-top:26px}h2{font-size:25px;margin-top:36px}h3{font-size:19px;margin-top:28px}p,li{color:var(--text)}blockquote{margin:22px 0;padding:14px 18px;border-left:4px solid var(--warn);background:#ffb02015;border-radius:0 12px 12px 0}code{font-family:"Cascadia Code",Consolas,monospace;font-size:.92em}:not(pre)>code{background:var(--panel2);border:1px solid var(--line);padding:2px 6px;border-radius:6px;color:#c026d3}.code-shell{margin:18px 0;border-radius:14px;overflow:hidden;background:var(--code);box-shadow:0 8px 20px #0002}.code-toolbar{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;background:#1c2739;color:#b8c5d9;font-size:11px;font-weight:800;letter-spacing:.08em}.copy-btn{border:1px solid #40506a;background:#27344a;color:white;border-radius:7px;padding:4px 9px;font-size:12px}pre{margin:0;padding:18px;overflow:auto;color:#d7e2f2;line-height:1.55;tab-size:2}pre code{font-size:13px}a{color:var(--brand)}hr{border:0;border-top:1px solid var(--line);margin:35px 0}ul,ol{padding-left:25px}.lesson-nav{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}.lesson-nav button{padding:11px 15px;border:1px solid var(--line);border-radius:11px;background:var(--panel2);color:var(--text);font-weight:750}.empty{display:none;padding:16px;text-align:center;color:var(--muted)}mark{background:#fde68a;color:#1f2937;border-radius:3px;padding:0 2px}.mobile-toggle{display:none;position:fixed;right:16px;bottom:16px;z-index:10;border:0;width:48px;height:48px;border-radius:50%;background:var(--brand);color:white;box-shadow:var(--shadow)}
+@media(max-width:900px){.app{grid-template-columns:1fr}aside{position:fixed;left:-330px;width:310px;transition:.25s;box-shadow:var(--shadow)}aside.open{left:0}.mobile-toggle{display:block}.hero{padding:45px 24px}.content{padding:24px 14px 70px}.intro,.lesson{padding:22px}.lesson h1{font-size:26px}}
+@media print{aside,.mobile-toggle,.lesson-nav,.copy-btn,.complete-label{display:none!important}.app{display:block}.hero{background:white;color:black;padding:20px}.lesson{display:block!important;box-shadow:none;break-inside:avoid;border:0}.content{max-width:none;padding:0}}
+</style>
+<style>
+.top-nav{position:fixed;top:16px;right:20px;z-index:50;display:flex;gap:8px;padding:6px;background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:8px;backdrop-filter:blur(14px);box-shadow:0 10px 25px rgba(31,48,86,.08)}
+body.dark .top-nav{background:rgba(18,26,43,.9)}
+.top-nav a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:750;padding:7px 10px;border:1px solid transparent;border-radius:6px}
+.top-nav a:hover,.top-nav a.active{color:var(--brand);background:var(--panel2);border-color:var(--line)}
+@media(max-width:900px){.top-nav{left:16px;right:16px;justify-content:center;flex-wrap:wrap}.hero{padding-top:88px}}
+@media print{.top-nav{display:none!important}}
 </style>
 </head>
 <body>
@@ -903,3 +911,215 @@ Expected results:
 1.
 2.
 </code></code>
+Chosen locators and reasons:
+
+Possible failure points:
+*/</pre></div>
+<h2 id="15-3-definition-of-done-85">15.3. Definition of Done</h2>
+<ul>
+<li>Test chạy độc lập.</li>
+<li>Test có assertion liên quan đến expected result.</li>
+<li>Không phụ thuộc test khác.</li>
+<li>Không dùng `waitForTimeout` để che lỗi.</li>
+<li>Locator dùng lại được đưa vào Page Object.</li>
+<li>Tên test mô tả behavior.</li>
+<li>Khi fail, report đủ rõ để điều tra.</li>
+</ul>
+<p>---</p>
+</section><section class="lesson" data-day="13" id="lesson-13"><div class="lesson-top"><span class="lesson-badge">Ngày 13/14</span><label class="complete-label"><input class="complete-check" type="checkbox" data-progress="day-13"><span>Đã hoàn thành</span></label></div><h1 id="ng-y-13-code-review-v-bug-isolation-86">Ngày 13: Code review và bug isolation</h1>
+<h2 id="16-1-checklist-87">16.1. Checklist</h2>
+<h3 id="test-design-88">Test design</h3>
+<ul>
+<li>Tên test có mô tả behavior không?</li>
+<li>Precondition có được chuẩn bị trong chính test không?</li>
+<li>Expected result có assertion tương ứng không?</li>
+<li>Test có chạy riêng được không?</li>
+</ul>
+<h3 id="locator-89">Locator</h3>
+<ul>
+<li>Có ưu tiên role, label, placeholder hoặc test id không?</li>
+<li>Locator match đúng một element không?</li>
+<li>Có dùng XPath khi chưa cần không?</li>
+</ul>
+<h3 id="synchronization-90">Synchronization</h3>
+<ul>
+<li>Có quên `await` không?</li>
+<li>Có delay cứng không cần thiết không?</li>
+<li>Có dùng web-first assertion không?</li>
+</ul>
+<h3 id="page-object-91">Page Object</h3>
+<ul>
+<li>Locator dùng chung có nằm trong Page Object không?</li>
+<li>Method có tên theo behavior không?</li>
+<li>Test file có bị đầy implementation detail không?</li>
+</ul>
+<h2 id="16-2-bug-isolation-92">16.2. Bug isolation</h2>
+<p>Tạo ba lỗi có chủ đích:</p>
+<p>1. Sai locator.</p>
+<p>2. Quên <code>await.</p>
+<p>3. Sai expected count.</p>
+<p>Không sửa ngay. Thu evidence rồi mới chỉ ra nguyên nhân.</p>
+<p>---</p>
+</section><section class="lesson" data-day="14" id="lesson-14"><div class="lesson-top"><span class="lesson-badge">Ngày 14/14</span><label class="complete-label"><input class="complete-check" type="checkbox" data-progress="day-14"><span>Đã hoàn thành</span></label></div><h1 id="ng-y-14-final-assessment-93">Ngày 14: Final assessment</h1>
+<h2 id="17-1-b-i-a-60-ph-t-94">17.1. Bài A, 60 phút</h2>
+<p>Không nhìn bài mẫu:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">1. Tạo file test mới.
+2. Mở TodoMVC.
+3. Tạo hai Todo.
+4. Complete một Todo.
+5. Kiểm tra tổng số Todo.
+6. Filter Completed.
+7. Kiểm tra đúng Todo hiển thị.
+8. Chạy test.
+9. Mở report.</code></pre></div>
+<h2 id="17-2-b-i-b-30-ph-t-95">17.2. Bài B, 30 phút</h2>
+<p>Điều tra một test fail và ghi:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Failure category:
+Expected:
+Actual:
+Failure line:
+Evidence:
+Root cause:
+Proposed fix:
+Result after rerun:</code></pre></div>
+<h2 id="17-3-b-i-c-30-ph-t-96">17.3. Bài C, 30 phút</h2>
+<p>Refactor:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">URL → config
+Data → test data
+Locator/action → Page Object
+Scenario/assertion flow → test file</code></pre></div>
+<h2 id="17-4-b-i-d-30-ph-t-97">17.4. Bài D, 30 phút</h2>
+<p>Viết Gherkin cho behavior:</p>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">User creates and completes a Todo.</code></pre></div>
+<p>Chỉ ra mỗi step gọi method nào trong <code>TodoPage</code>.</p>
+<p>---</p>
+<h1 id="ph-n-iii-t-i-li-u-d-ng-cho-gi-ng-vi-n-98">PHẦN III. TÀI LIỆU DÙNG CHO GIẢNG VIÊN</h1>
+<h2 id="18-c-u-h-i-v-n-p-b-t-bu-c-99">18. Câu hỏi vấn đáp bắt buộc</h2>
+<p>1. <code>test</code> và <code>expect</code> khác nhau thế nào?</p>
+<p>2. <code>page</code> đến từ đâu?</p>
+<p>3. Vì sao browser action thường cần <code>await</code>?</p>
+<p>4. Locator có thực hiện action ngay khi được khai báo không?</p>
+<p>5. <code>fill</code> và <code>press(&#x27;Enter&#x27;)</code> đóng vai trò khác nhau thế nào?</p>
+<p>6. Assertion chứng minh expected result nào?</p>
+<p>7. Vì sao không mặc định dùng <code>waitForTimeout</code>?</p>
+<p>8. Test isolation là gì?</p>
+<p>9. Nội dung nào nên nằm trong Page Object?</p>
+<p>10. Feature file có nên chứa CSS selector không?</p>
+<h2 id="19-rubric-nh-gi-100">19. Rubric đánh giá</h2>
+<h3 id="ch-a-t-101">Chưa đạt</h3>
+<ul>
+<li>Chỉ chạy được code copy sẵn.</li>
+<li>Không giải thích được test đang kiểm tra gì.</li>
+<li>Không đọc được dòng fail.</li>
+<li>Sửa lỗi bằng tăng timeout không có bằng chứng.</li>
+<li>Các test phụ thuộc nhau.</li>
+</ul>
+<h3 id="t-m-c-c-b-n-102">Đạt mức cơ bản</h3>
+<ul>
+<li>Đọc và sửa được TypeScript test đơn giản.</li>
+<li>Chạy riêng một test hoặc toàn suite.</li>
+<li>Chọn locator cơ bản phù hợp.</li>
+<li>Viết được action và assertion.</li>
+<li>Debug được lỗi locator hoặc expected đơn giản.</li>
+<li>Thêm test theo Page Object có sẵn.</li>
+</ul>
+<h3 id="t-t-t-103">Đạt tốt</h3>
+<ul>
+<li>Tự phân tích Arrange, Act, Assert.</li>
+<li>Test độc lập và có expected rõ.</li>
+<li>Không lạm dụng delay.</li>
+<li>Biết dùng report và trace làm bằng chứng.</li>
+<li>Refactor đúng trách nhiệm giữa config, data, Page Object và test.</li>
+<li>Đọc và sửa được Cucumber step definition cơ bản.</li>
+</ul>
+<p>---</p>
+<h1 id="ph-n-iv-cheat-sheet-104">PHẦN IV. CHEAT SHEET</h1>
+<h2 id="20-l-nh-playwright-105">20. Lệnh Playwright</h2>
+<div class="code-shell"><div class="code-toolbar"><span>BASH</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-bash">npx playwright test
+npx playwright test tests/todo-basic.spec.ts
+npx playwright test -g &quot;test name&quot;
+npx playwright test --headed
+npx playwright test --debug
+npx playwright test --ui
+npx playwright test --trace on
+npx playwright show-report</code></pre></div>
+<h2 id="21-test-template-106">21. Test template</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TS</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-ts">import { test, expect } from &#x27;@playwright/test&#x27;;
+
+test(&#x27;behavior description&#x27;, async ({ page }) =&gt; {
+  // Arrange
+  await page.goto(&#x27;URL&#x27;);
+
+  // Act
+  await page.getByRole(&#x27;button&#x27;, { name: &#x27;Button name&#x27; }).click();
+
+  // Assert
+  await expect(page.getByText(&#x27;Expected result&#x27;)).toBeVisible();
+});</code></pre></div>
+<h2 id="22-quy-tr-nh-x-l-test-fail-107">22. Quy trình xử lý test fail</h2>
+<div class="code-shell"><div class="code-toolbar"><span>TEXT</span><button class="copy-btn" type="button" aria-label="Sao chép đoạn mã">Sao chép</button></div><pre><code class="language-text">Không đoán
+→ Đọc error
+→ Xác định dòng fail
+→ So sánh expected/actual
+→ Kiểm tra locator và state
+→ Thu evidence bằng report/trace
+→ Phân loại nguyên nhân
+→ Sửa đúng nguyên nhân
+→ Chạy lại để xác nhận</code></pre></div>
+<p>---</p>
+<h1 id="23-t-i-li-u-tham-kh-o-108">23. Tài liệu tham khảo</h1>
+<ul>
+<li>Playwright Installation: https://playwright.dev/docs/intro</li>
+<li>Playwright Locators: https://playwright.dev/docs/locators</li>
+<li>Playwright Assertions: https://playwright.dev/docs/test-assertions</li>
+<li>Playwright Debugging: https://playwright.dev/docs/debug</li>
+<li>Playwright Trace Viewer: https://playwright.dev/docs/trace-viewer</li>
+<li>Playwright Fixtures: https://playwright.dev/docs/test-fixtures</li>
+<li>Playwright Page Object Models: https://playwright.dev/docs/pom</li>
+<li>Cucumber Documentation: https://cucumber.io/docs/</li>
+</ul>
+<p>---</p>
+<h1 id="24-ghi-ch-gi-i-h-n-ph-m-vi-109">24. Ghi chú giới hạn phạm vi</h1>
+<p>Tài liệu này ưu tiên năng lực thực hành cơ bản trong 14 ngày. Các chủ đề nâng cao trong syllabus như XPath axes, action nâng cao, API mocking, parallel execution, authentication storage state, report nâng cao và CI/CD được giữ ở mức nhận diện và tra cứu. Không đánh giá học viên mới bằng khả năng tự triển khai các phần nâng cao này.</p></section>
+  </div>
+</main>
+</div>
+<button class="mobile-toggle" id="mobileBtn" aria-label="Mở danh mục">☰</button>
+<script>
+const lessons=[...document.querySelectorAll('.lesson')];
+const navItems=[...document.querySelectorAll('.nav-item')];
+const storageKey='automation-course-progress-v1';
+let current=0;
+function showLesson(index, updateHash=true){
+  current=Math.max(0,Math.min(index,lessons.length-1));
+  lessons.forEach((x,i)=>x.classList.toggle('active',i===current));
+  navItems.forEach((x,i)=>x.classList.toggle('active',i===current));
+  addLessonNav();
+  if(updateHash) history.replaceState(null,'','#lesson-'+(current+1));
+  window.scrollTo({top:document.querySelector('.hero').offsetHeight,behavior:'smooth'});
+  document.getElementById('sidebar').classList.remove('open');
+}
+function addLessonNav(){
+  document.querySelectorAll('.lesson-nav').forEach(x=>x.remove());
+  const wrap=document.createElement('div'); wrap.className='lesson-nav';
+  const prev=document.createElement('button'); prev.textContent='← Bài trước'; prev.disabled=current===0; prev.onclick=()=>showLesson(current-1);
+  const next=document.createElement('button'); next.textContent=current===lessons.length-1?'Hoàn thành khóa học':'Bài tiếp theo →'; next.onclick=()=>{if(current<lessons.length-1)showLesson(current+1);else window.scrollTo({top:0,behavior:'smooth'})};
+  wrap.append(prev,next); lessons[current].appendChild(wrap);
+}
+navItems.forEach((btn,i)=>btn.addEventListener('click',()=>showLesson(i)));
+function loadProgress(){
+  let saved={}; try{saved=JSON.parse(localStorage.getItem(storageKey)||'{}')}catch(e){}
+  document.querySelectorAll('.complete-check').forEach(cb=>{cb.checked=!!saved[cb.dataset.progress]; cb.addEventListener('change',saveProgress)}); updateProgress();
+}
+function saveProgress(){
+const data={}; document.querySelectorAll('.complete-check').forEach(cb=>data[cb.dataset.progress]=cb.checked); localStorage.setItem(storageKey,JSON.stringify(data)); updateProgress();
+}
+function updateProgress(){const done=document.querySelectorAll('.complete-check:checked').length;document.getElementById('progressText').textContent=`${done}/14 ngày`;document.getElementById('progressFill').style.width=`${done/14*100}%`;}
+document.querySelectorAll('.copy-btn').forEach(btn=>btn.onclick=async()=>{const code=btn.closest('.code-shell').querySelector('code').innerText;await navigator.clipboard.writeText(code);const old=btn.textContent;btn.textContent='Đã chép';setTimeout(()=>btn.textContent=old,1200)});
+const search=document.getElementById('search'); search.addEventListener('input',()=>{const q=search.value.trim().toLowerCase();let visible=0;navItems.forEach((btn,i)=>{const ok=!q||lessons[i].innerText.toLowerCase().includes(q);btn.style.display=ok?'grid':'none';if(ok)visible++});document.getElementById('empty').style.display=visible?'none':'block';});
+const themeBtn=document.getElementById('themeBtn');const theme=localStorage.getItem('automation-course-theme');if(theme==='dark')document.body.classList.add('dark');themeBtn.onclick=()=>{document.body.classList.toggle('dark');localStorage.setItem('automation-course-theme',document.body.classList.contains('dark')?'dark':'light')};
+document.getElementById('mobileBtn').onclick=()=>document.getElementById('sidebar').classList.toggle('open');
+loadProgress(); const hash=location.hash.match(/lesson-(\d+)/);showLesson(hash?Number(hash[1])-1:0,false);
+</script>
+</body>
+</html>
